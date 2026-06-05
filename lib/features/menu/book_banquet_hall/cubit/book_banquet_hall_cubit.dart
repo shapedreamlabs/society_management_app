@@ -6,9 +6,9 @@ class BookBanquetHallCubit extends Cubit<BookBanquetHallState> {
   BookBanquetHallCubit() : super(const BookBanquetHallState());
 
   final List<String> purposes = const [
-    'Birthday Celebration',
-    'Engagement Function',
-    'Society Meeting',
+    AppLabelKeys.birthdayCelebration,
+    AppLabelKeys.engagementFunction,
+    AppLabelKeys.societyMeeting,
   ];
 
   void onPurposeChanged(String? value) {
@@ -71,15 +71,17 @@ class BookBanquetHallCubit extends Cubit<BookBanquetHallState> {
   }
 
   Future<void> pickStartTime(BuildContext context) async {
+    final l10n = context.l10n;
     final pickedTime = await _pickTime(context);
     if (pickedTime == null) return;
-    onStartTimeChanged(_formatTime(pickedTime));
+    onStartTimeChanged(_formatTime(l10n, pickedTime));
   }
 
   Future<void> pickEndTime(BuildContext context) async {
+    final l10n = context.l10n;
     final pickedTime = await _pickTime(context);
     if (pickedTime == null) return;
-    onEndTimeChanged(_formatTime(pickedTime));
+    onEndTimeChanged(_formatTime(l10n, pickedTime));
   }
 
   bool validate(AppLocalizations? l10n) {
@@ -191,10 +193,10 @@ class BookBanquetHallCubit extends Cubit<BookBanquetHallState> {
     return '$day/$month/$year';
   }
 
-  String _formatTime(TimeOfDay pickedTime) {
+  String _formatTime(AppLocalizations? l10n, TimeOfDay pickedTime) {
     final hour = pickedTime.hourOfPeriod == 0 ? 12 : pickedTime.hourOfPeriod;
     final minute = pickedTime.minute.toString().padLeft(2, '0');
-    final period = pickedTime.period == DayPeriod.am ? 'AM' : 'PM';
+    final period = LocalizationLabels.timePeriod(l10n, pickedTime.period);
     return '$hour:$minute $period';
   }
 

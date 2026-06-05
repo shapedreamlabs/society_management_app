@@ -173,6 +173,8 @@ class _ResidentCard extends StatelessWidget {
                       children: [
                         Text(name, style: styleW500S16),
 
+                        4.h.spaceVertical,
+
                         Text(
                           flat,
                           style: styleW400S14.copyWith(
@@ -254,7 +256,7 @@ class _InfoColumn extends StatelessWidget {
           ),
         ),
 
-        2.h.spaceVertical,
+        4.h.spaceVertical,
 
         Text(value, style: styleW500S14),
       ],

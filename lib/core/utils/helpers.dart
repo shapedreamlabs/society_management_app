@@ -29,11 +29,11 @@ Future<void> showCatchToast(
   String content = "";
 
   if (!isInternetOn) {
-    content = "Check you Internet connection !";
+    content = LocalizationLabels.checkInternetConnection();
   } else if (kDebugMode) {
     content = msg ?? exception.toString();
   } else {
-    content = "Something went wrong !";
+    content = LocalizationLabels.somethingWentWrong();
   }
 
   showErrorToast(content);

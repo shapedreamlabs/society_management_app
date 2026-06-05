@@ -39,22 +39,37 @@ class ComplaintsScreen extends StatelessWidget {
         builder: (context, state) {
           final cubit = context.read<ComplaintsCubit>();
           final items = cubit.filteredItems();
+          final urgentCount = cubit.allItems
+              .where((e) => e['status'] == 'urgent')
+              .length;
+          final normalCount = cubit.allItems
+              .where((e) => e['status'] == 'normal')
+              .length;
+          final resolvedCount = cubit.allItems
+              .where((e) => e['status'] == 'resolved')
+              .length;
 
           return Column(
             children: [
-              _FilterChipsRow(
-                filter: state.filter,
-                urgentCount: cubit.allItems
-                    .where((e) => e['status'] == 'urgent')
-                    .length,
-                normalCount: cubit.allItems
-                    .where((e) => e['status'] == 'normal')
-                    .length,
-                resolvedCount: cubit.allItems
-                    .where((e) => e['status'] == 'resolved')
-                    .length,
-                onChanged: cubit.onFilterChanged,
-                l10n: l10n,
+              Padding(
+                padding: EdgeInsets.fromLTRB(
+                  AppConstants.horizontalPadding,
+                  14.h,
+                  AppConstants.horizontalPadding,
+                  0,
+                ),
+                child: CommonFilterChipRow(
+                  labels: [
+                    '${l10n?.all ?? ""} (${urgentCount + normalCount + resolvedCount})',
+                    '${l10n?.urgent ?? ""} ($urgentCount)',
+                    '${l10n?.normal ?? ""} ($normalCount)',
+                    l10n?.resolved ?? "",
+                  ],
+                  selectedIndex: state.filter.index,
+                  onSelected: (index) => cubit.onFilterChanged(
+                    ComplaintsFilter.values[index],
+                  ),
+                ),
               ),
               Expanded(
                 child: items.isEmpty
@@ -93,100 +108,6 @@ class ComplaintsScreen extends StatelessWidget {
             ],
           );
         },
-      ),
-    );
-  }
-}
-
-class _FilterChipsRow extends StatelessWidget {
-  const _FilterChipsRow({
-    required this.filter,
-    required this.urgentCount,
-    required this.normalCount,
-    required this.resolvedCount,
-    required this.onChanged,
-    required this.l10n,
-  });
-
-  final ComplaintsFilter filter;
-  final int urgentCount;
-  final int normalCount;
-  final int resolvedCount;
-  final void Function(ComplaintsFilter value) onChanged;
-  final AppLocalizations? l10n;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.fromLTRB(
-        AppConstants.horizontalPadding,
-        14.h,
-        AppConstants.horizontalPadding,
-        0,
-      ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: [
-            _FilterChip(
-              label:
-                  '${l10n?.all ?? ""} (${urgentCount + normalCount + resolvedCount})',
-              isSelected: filter == ComplaintsFilter.all,
-              onTap: () => onChanged(ComplaintsFilter.all),
-            ),
-            10.w.spaceHorizontal,
-            _FilterChip(
-              label: '${l10n?.urgent ?? ""} ($urgentCount)',
-              isSelected: filter == ComplaintsFilter.urgent,
-              onTap: () => onChanged(ComplaintsFilter.urgent),
-            ),
-            10.w.spaceHorizontal,
-            _FilterChip(
-              label: '${l10n?.normal ?? ""} ($normalCount)',
-              isSelected: filter == ComplaintsFilter.normal,
-              onTap: () => onChanged(ComplaintsFilter.normal),
-            ),
-            10.w.spaceHorizontal,
-            _FilterChip(
-              label: l10n?.resolved ?? "",
-              isSelected: filter == ComplaintsFilter.resolved,
-              onTap: () => onChanged(ComplaintsFilter.resolved),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class _FilterChip extends StatelessWidget {
-  const _FilterChip({
-    required this.label,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final String label;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Material(
-      color: isSelected ? AppColors.orange : AppColors.white,
-      borderRadius: BorderRadius.circular(24.r),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(24.r),
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-          child: Text(
-            label,
-            style: styleW500S12.copyWith(
-              color: isSelected ? AppColors.white : AppColors.text,
-            ),
-          ),
-        ),
       ),
     );
   }

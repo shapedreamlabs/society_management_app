@@ -192,11 +192,7 @@ class EditProfileScreen extends StatelessWidget {
                   hintText: l10n?.selectResidentType ?? '',
                   items: cubit.residentTypes,
                   value: state.residentType,
-                  itemAsString: (value) {
-                    if (value == 'Owner') return l10n?.owner ?? value;
-                    if (value == 'Tenant') return l10n?.tenant ?? value;
-                    return value;
-                  },
+                  itemAsString: (value) => LocalizationLabels.of(l10n, value),
                   onChanged: cubit.onResidentTypeChanged,
                   error: state.residentTypeError,
                 ),

@@ -70,7 +70,9 @@ class SettingScreen extends StatelessWidget {
                     15.h.spaceVertical,
 
                     Text(
-                      state.name.isNotEmpty ? state.name : "User",
+                      state.name.isNotEmpty
+                          ? state.name
+                          : (l10n?.defaultUserName ?? ''),
                       style: styleW600S20.copyWith(color: AppColors.white),
                     ),
 

@@ -79,7 +79,7 @@ class AddFamilyMemberScreen extends StatelessWidget {
                   hintText: l10n?.selectOccupation ?? '',
                   items: cubit.occupations,
                   value: state.occupation,
-                  itemAsString: (value) => value,
+                  itemAsString: (value) => LocalizationLabels.of(l10n, value),
                   onChanged: cubit.onOccupationChanged,
                   error: state.occupationError,
                 ),

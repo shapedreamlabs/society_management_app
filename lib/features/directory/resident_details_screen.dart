@@ -88,11 +88,21 @@ class ResidentDetailsScreen extends StatelessWidget {
                   ),
                   detailRow(
                     label: l10n?.status ?? '',
-                    value: resident['status'] ?? l10n?.active ?? '-',
+                    value: LocalizationLabels.of(
+                      l10n,
+                      (resident['status'] ?? AppLabelKeys.active)
+                          .toString()
+                          .toLowerCase(),
+                    ),
                   ),
                   detailRow(
                     label: l10n?.residentType ?? '',
-                    value: resident['residentType'] ?? l10n?.owner ?? '-',
+                    value: LocalizationLabels.of(
+                      l10n,
+                      (resident['residentType'] ?? AppLabelKeys.owner)
+                          .toString()
+                          .toLowerCase(),
+                    ),
                     showDivider: false,
                   ),
                 ],

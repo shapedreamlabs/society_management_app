@@ -61,8 +61,7 @@ import 'app_localizations_en.dart';
 /// be consistent with the languages listed in the AppLocalizations.supportedLocales
 /// property.
 abstract class AppLocalizations {
-  AppLocalizations(String locale)
-    : localeName = intl.Intl.canonicalizedLocale(locale.toString());
+  AppLocalizations(String locale) : localeName = intl.Intl.canonicalizedLocale(locale.toString());
 
   final String localeName;
 
@@ -70,8 +69,7 @@ abstract class AppLocalizations {
     return Localizations.of<AppLocalizations>(context, AppLocalizations);
   }
 
-  static const LocalizationsDelegate<AppLocalizations> delegate =
-      _AppLocalizationsDelegate();
+  static const LocalizationsDelegate<AppLocalizations> delegate = _AppLocalizationsDelegate();
 
   /// A list of this localizations delegate along with the default localizations
   /// delegates.
@@ -83,16 +81,17 @@ abstract class AppLocalizations {
   /// Additional delegates can be added by appending to this list in
   /// MaterialApp. This list does not have to be used at all if a custom list
   /// of delegates is preferred or required.
-  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates =
-      <LocalizationsDelegate<dynamic>>[
-        delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ];
+  static const List<LocalizationsDelegate<dynamic>> localizationsDelegates = <LocalizationsDelegate<dynamic>>[
+    delegate,
+    GlobalMaterialLocalizations.delegate,
+    GlobalCupertinoLocalizations.delegate,
+    GlobalWidgetsLocalizations.delegate,
+  ];
 
   /// A list of this localizations delegate's supported locales.
-  static const List<Locale> supportedLocales = <Locale>[Locale('en')];
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale('en')
+  ];
 
   /// No description provided for @society_management.
   ///
@@ -1497,10 +1496,471 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Paid To'**
   String get paidTo;
+
+  /// No description provided for @fireDrillTodayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fire Drill Today At 6 PM'**
+  String get fireDrillTodayTitle;
+
+  /// No description provided for @fireDrillTodaySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Assemble At Ground Floor Parking • All Wings'**
+  String get fireDrillTodaySubtitle;
+
+  /// No description provided for @societyOverview.
+  ///
+  /// In en, this message translates to:
+  /// **'Society Overview'**
+  String get societyOverview;
+
+  /// No description provided for @totalFlats.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Flats'**
+  String get totalFlats;
+
+  /// No description provided for @totalResidents.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Residents'**
+  String get totalResidents;
+
+  /// No description provided for @totalComplaints.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Complains'**
+  String get totalComplaints;
+
+  /// No description provided for @totalBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Balance'**
+  String get totalBalance;
+
+  /// No description provided for @recentComplaints.
+  ///
+  /// In en, this message translates to:
+  /// **'Recent Complaints'**
+  String get recentComplaints;
+
+  /// No description provided for @goodMorning.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Morning!'**
+  String get goodMorning;
+
+  /// No description provided for @goodAfternoon.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Afternoon!'**
+  String get goodAfternoon;
+
+  /// No description provided for @goodEvening.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Evening!'**
+  String get goodEvening;
+
+  /// No description provided for @goodNight.
+  ///
+  /// In en, this message translates to:
+  /// **'Good Night!'**
+  String get goodNight;
+
+  /// No description provided for @toastError.
+  ///
+  /// In en, this message translates to:
+  /// **'Error'**
+  String get toastError;
+
+  /// No description provided for @toastSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Success'**
+  String get toastSuccess;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error occurred'**
+  String get unexpectedError;
+
+  /// No description provided for @noInternetConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get noInternetConnection;
+
+  /// No description provided for @connectionTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timeout'**
+  String get connectionTimeout;
+
+  /// No description provided for @requestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request cancelled'**
+  String get requestCancelled;
+
+  /// No description provided for @networkError.
+  ///
+  /// In en, this message translates to:
+  /// **'Network error occurred'**
+  String get networkError;
+
+  /// No description provided for @serverError.
+  ///
+  /// In en, this message translates to:
+  /// **'Server error occurred'**
+  String get serverError;
+
+  /// No description provided for @checkInternetConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'Check your internet connection!'**
+  String get checkInternetConnection;
+
+  /// No description provided for @defaultUserName.
+  ///
+  /// In en, this message translates to:
+  /// **'User'**
+  String get defaultUserName;
+
+  /// No description provided for @notAvailable.
+  ///
+  /// In en, this message translates to:
+  /// **'-'**
+  String get notAvailable;
+
+  /// No description provided for @priorityLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Low'**
+  String get priorityLow;
+
+  /// No description provided for @priorityMedium.
+  ///
+  /// In en, this message translates to:
+  /// **'Medium'**
+  String get priorityMedium;
+
+  /// No description provided for @priorityHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'High'**
+  String get priorityHigh;
+
+  /// No description provided for @family.
+  ///
+  /// In en, this message translates to:
+  /// **'Family'**
+  String get family;
+
+  /// No description provided for @other.
+  ///
+  /// In en, this message translates to:
+  /// **'Other'**
+  String get other;
+
+  /// No description provided for @societyAdmin.
+  ///
+  /// In en, this message translates to:
+  /// **'Society Admin'**
+  String get societyAdmin;
+
+  /// No description provided for @paymentCash.
+  ///
+  /// In en, this message translates to:
+  /// **'Cash'**
+  String get paymentCash;
+
+  /// No description provided for @paymentUpi.
+  ///
+  /// In en, this message translates to:
+  /// **'UPI'**
+  String get paymentUpi;
+
+  /// No description provided for @paymentBankTransfer.
+  ///
+  /// In en, this message translates to:
+  /// **'Bank Transfer'**
+  String get paymentBankTransfer;
+
+  /// No description provided for @paymentCheque.
+  ///
+  /// In en, this message translates to:
+  /// **'Cheque'**
+  String get paymentCheque;
+
+  /// No description provided for @security.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get security;
+
+  /// No description provided for @utilities.
+  ///
+  /// In en, this message translates to:
+  /// **'Utilities'**
+  String get utilities;
+
+  /// No description provided for @repairs.
+  ///
+  /// In en, this message translates to:
+  /// **'Repairs'**
+  String get repairs;
+
+  /// No description provided for @vendor.
+  ///
+  /// In en, this message translates to:
+  /// **'Vendor'**
+  String get vendor;
+
+  /// No description provided for @purposeBirthdayCelebration.
+  ///
+  /// In en, this message translates to:
+  /// **'Birthday Celebration'**
+  String get purposeBirthdayCelebration;
+
+  /// No description provided for @purposeEngagementFunction.
+  ///
+  /// In en, this message translates to:
+  /// **'Engagement Function'**
+  String get purposeEngagementFunction;
+
+  /// No description provided for @purposeSocietyMeeting.
+  ///
+  /// In en, this message translates to:
+  /// **'Society Meeting'**
+  String get purposeSocietyMeeting;
+
+  /// No description provided for @purposeDelivery.
+  ///
+  /// In en, this message translates to:
+  /// **'Delivery'**
+  String get purposeDelivery;
+
+  /// No description provided for @purposeGuest.
+  ///
+  /// In en, this message translates to:
+  /// **'Guest'**
+  String get purposeGuest;
+
+  /// No description provided for @purposeService.
+  ///
+  /// In en, this message translates to:
+  /// **'Service'**
+  String get purposeService;
+
+  /// No description provided for @purposePersonal.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal'**
+  String get purposePersonal;
+
+  /// No description provided for @occupationAccountant.
+  ///
+  /// In en, this message translates to:
+  /// **'Accountant'**
+  String get occupationAccountant;
+
+  /// No description provided for @occupationEngineer.
+  ///
+  /// In en, this message translates to:
+  /// **'Engineer'**
+  String get occupationEngineer;
+
+  /// No description provided for @occupationDoctor.
+  ///
+  /// In en, this message translates to:
+  /// **'Doctor'**
+  String get occupationDoctor;
+
+  /// No description provided for @occupationTeacher.
+  ///
+  /// In en, this message translates to:
+  /// **'Teacher'**
+  String get occupationTeacher;
+
+  /// No description provided for @occupationLawyer.
+  ///
+  /// In en, this message translates to:
+  /// **'Lawyer'**
+  String get occupationLawyer;
+
+  /// No description provided for @occupationBusiness.
+  ///
+  /// In en, this message translates to:
+  /// **'Business'**
+  String get occupationBusiness;
+
+  /// No description provided for @occupationStudent.
+  ///
+  /// In en, this message translates to:
+  /// **'Student'**
+  String get occupationStudent;
+
+  /// No description provided for @occupationHomemaker.
+  ///
+  /// In en, this message translates to:
+  /// **'Homemaker'**
+  String get occupationHomemaker;
+
+  /// No description provided for @languageEnglishUS.
+  ///
+  /// In en, this message translates to:
+  /// **'English (United States)'**
+  String get languageEnglishUS;
+
+  /// No description provided for @languageGujarati.
+  ///
+  /// In en, this message translates to:
+  /// **'Gujarati'**
+  String get languageGujarati;
+
+  /// No description provided for @languageHindi.
+  ///
+  /// In en, this message translates to:
+  /// **'Hindi'**
+  String get languageHindi;
+
+  /// No description provided for @languageEnglish.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get languageEnglish;
+
+  /// No description provided for @am.
+  ///
+  /// In en, this message translates to:
+  /// **'AM'**
+  String get am;
+
+  /// No description provided for @pm.
+  ///
+  /// In en, this message translates to:
+  /// **'PM'**
+  String get pm;
+
+  /// No description provided for @yesterday.
+  ///
+  /// In en, this message translates to:
+  /// **'Yesterday'**
+  String get yesterday;
+
+  /// No description provided for @daysAgo.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} days ago, {time}'**
+  String daysAgo(String count, String time);
+
+  /// No description provided for @weekdaySun.
+  ///
+  /// In en, this message translates to:
+  /// **'S'**
+  String get weekdaySun;
+
+  /// No description provided for @weekdayMon.
+  ///
+  /// In en, this message translates to:
+  /// **'M'**
+  String get weekdayMon;
+
+  /// No description provided for @weekdayTue.
+  ///
+  /// In en, this message translates to:
+  /// **'T'**
+  String get weekdayTue;
+
+  /// No description provided for @weekdayWed.
+  ///
+  /// In en, this message translates to:
+  /// **'W'**
+  String get weekdayWed;
+
+  /// No description provided for @weekdayThu.
+  ///
+  /// In en, this message translates to:
+  /// **'T'**
+  String get weekdayThu;
+
+  /// No description provided for @weekdayFri.
+  ///
+  /// In en, this message translates to:
+  /// **'F'**
+  String get weekdayFri;
+
+  /// No description provided for @weekdaySat.
+  ///
+  /// In en, this message translates to:
+  /// **'S'**
+  String get weekdaySat;
+
+  /// No description provided for @monthJan.
+  ///
+  /// In en, this message translates to:
+  /// **'Jan'**
+  String get monthJan;
+
+  /// No description provided for @monthFeb.
+  ///
+  /// In en, this message translates to:
+  /// **'Feb'**
+  String get monthFeb;
+
+  /// No description provided for @monthMar.
+  ///
+  /// In en, this message translates to:
+  /// **'Mar'**
+  String get monthMar;
+
+  /// No description provided for @monthApr.
+  ///
+  /// In en, this message translates to:
+  /// **'Apr'**
+  String get monthApr;
+
+  /// No description provided for @monthMay.
+  ///
+  /// In en, this message translates to:
+  /// **'May'**
+  String get monthMay;
+
+  /// No description provided for @allWings.
+  ///
+  /// In en, this message translates to:
+  /// **'All Wings'**
+  String get allWings;
+
+  /// No description provided for @badRequest.
+  ///
+  /// In en, this message translates to:
+  /// **'Bad request'**
+  String get badRequest;
+
+  /// No description provided for @sessionExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Session expired'**
+  String get sessionExpired;
+
+  /// No description provided for @accessDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'Access denied'**
+  String get accessDenied;
+
+  /// No description provided for @resourceNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Resource not found'**
+  String get resourceNotFound;
 }
 
-class _AppLocalizationsDelegate
-    extends LocalizationsDelegate<AppLocalizations> {
+class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
   const _AppLocalizationsDelegate();
 
   @override
@@ -1509,24 +1969,24 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>['en'].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
 }
 
 AppLocalizations lookupAppLocalizations(Locale locale) {
+
+
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
-    case 'en':
-      return AppLocalizationsEn();
+    case 'en': return AppLocalizationsEn();
   }
 
   throw FlutterError(
     'AppLocalizations.delegate failed to load unsupported locale "$locale". This is likely '
     'an issue with the localizations generation tool. Please file an issue '
     'on GitHub with a reproducible sample app and the gen-l10n configuration '
-    'that was used.',
+    'that was used.'
   );
 }

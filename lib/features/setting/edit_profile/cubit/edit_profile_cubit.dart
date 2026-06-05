@@ -20,7 +20,10 @@ class EditProfileCubit extends Cubit<EditProfileState> {
     '203',
     '305',
   ];
-  final List<String> residentTypes = const ['Owner', 'Tenant'];
+  final List<String> residentTypes = const [
+    AppLabelKeys.owner,
+    AppLabelKeys.tenant,
+  ];
 
   final TextEditingController nameController = TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();

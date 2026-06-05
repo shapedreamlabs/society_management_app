@@ -1,7 +1,9 @@
 import 'package:society_managment/society_managment.dart';
 
 class SocietyOverview extends StatelessWidget {
-  const SocietyOverview({super.key});
+  const SocietyOverview({super.key, required this.l10n});
+
+  final AppLocalizations? l10n;
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +11,7 @@ class SocietyOverview extends StatelessWidget {
       spacing: 12.h,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('Society Overview', style: styleW500S20),
+        Text(l10n?.societyOverview ?? '', style: styleW500S20),
         Row(
           spacing: 12.w,
           children: [
@@ -17,14 +19,14 @@ class SocietyOverview extends StatelessWidget {
               child: CommonOverviewCard(
                 imagePath: AppAssets.buildingImg,
                 value: '250',
-                title: 'Total Flats',
+                title: l10n?.totalFlats ?? '',
               ),
             ),
             Expanded(
               child: CommonOverviewCard(
                 imagePath: AppAssets.residentImg,
                 value: '958',
-                title: 'Total Residents',
+                title: l10n?.totalResidents ?? '',
               ),
             ),
           ],
@@ -36,15 +38,14 @@ class SocietyOverview extends StatelessWidget {
               child: CommonOverviewCard(
                 imagePath: AppAssets.angryImg,
                 value: '10',
-                title: 'Total Complains',
+                title: l10n?.totalComplaints ?? '',
               ),
             ),
-
             Expanded(
               child: CommonOverviewCard(
                 imagePath: AppAssets.moneyBagImg,
                 value: '2.4 L',
-                title: 'Total Balance',
+                title: l10n?.totalBalance ?? '',
               ),
             ),
           ],

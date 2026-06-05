@@ -96,11 +96,21 @@ class _MaintenanceScaffoldState extends State<_MaintenanceScaffold> {
             ],
           ),
         ),
-        if (_speedDialOpen && showSpeedDial)
+        if (showSpeedDial)
           Positioned.fill(
-            child: GestureDetector(
-              onTap: () => setState(() => _speedDialOpen = false),
-              child: ColoredBox(color: AppColors.black.withValues(alpha: 0.45)),
+            child: IgnorePointer(
+              ignoring: !_speedDialOpen,
+              child: AnimatedOpacity(
+                opacity: _speedDialOpen ? 1 : 0,
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.easeInOut,
+                child: GestureDetector(
+                  onTap: () => setState(() => _speedDialOpen = false),
+                  child: ColoredBox(
+                    color: AppColors.black.withValues(alpha: 0.45),
+                  ),
+                ),
+              ),
             ),
           ),
         if (showFab)

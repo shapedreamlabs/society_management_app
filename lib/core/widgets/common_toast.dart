@@ -56,7 +56,10 @@ void showCustomToast(String msg, {bool error = false}) {
               crossAxisAlignment: .start,
               mainAxisSize: .min,
               children: [
-                Text(error ? "Error" : "Success", style: styleW600S14),
+                Text(
+                  LocalizationLabels.toastTitle(error: error),
+                  style: styleW600S14,
+                ),
                 Text(msg, style: styleW400S12),
               ],
             ),

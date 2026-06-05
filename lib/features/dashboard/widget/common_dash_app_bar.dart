@@ -17,23 +17,32 @@ class CommonDashAppBar extends StatelessWidget implements PreferredSizeWidget {
     final l10n = context.l10n;
 
     return CustomAppBar(
-      color: AppColors.blue,
+      color: Colors.transparent,
       backArrow: false,
       centerTitle: false,
-      bottomSize: showSearchBar ? _searchBottomHeight : 0,
+      flexibleSpaceWidget: Container(
+        decoration: const BoxDecoration(
+          color: AppColors.blue,
+          image: DecorationImage(
+            image: AssetImage(AppAssets.grillImg),
+            fit: BoxFit.cover,
+          ),
+        ),
+      ),
+
       titleWidget: const _UserWidget(),
       titleSpacing: 20.w,
       actions: [
         Padding(
-          padding: .only(right: AppConstants.horizontalPadding),
+          padding: EdgeInsets.only(right: AppConstants.horizontalPadding),
           child: Row(
-            mainAxisSize: .min,
-            spacing: 10.w,
+            mainAxisSize: MainAxisSize.min,
             children: [
               _HomeAppBarIcon(icon: AppAssets.emergencyAlert, onTap: () {}),
+              SizedBox(width: 10.w),
               _HomeAppBarIcon(
                 icon: AppAssets.menu,
-                onTap: () => context.navigator.pushNamed(MenuScreen.routeName),
+                onTap: () => Scaffold.of(context).openDrawer(),
               ),
             ],
           ),
@@ -65,6 +74,8 @@ class _UserWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return Row(
       spacing: 10.w,
       children: [
@@ -91,7 +102,7 @@ class _UserWidget extends StatelessWidget {
             spacing: 2.h,
             children: [
               Text(
-                greetingText,
+                LocalizationLabels.greeting(l10n),
                 maxLines: 1,
                 overflow: .ellipsis,
                 style: styleW400S16.copyWith(
@@ -99,7 +110,7 @@ class _UserWidget extends StatelessWidget {
                 ),
               ),
               Text(
-                userModel?.name ?? "-",
+                userModel?.name ?? (l10n?.notAvailable ?? ''),
                 maxLines: 1,
                 overflow: .ellipsis,
                 style: styleW500S18.copyWith(color: AppColors.white),

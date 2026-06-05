@@ -118,21 +118,6 @@ Future<File?> compressImage(File? file, {double? requestedSize}) async {
   return result;
 }
 
-String get greetingText {
-  final hour = DateTime.now().hour;
-
-  if (hour >= 5 && hour < 12) {
-    return 'Good Morning!';
-  }
-  if (hour >= 12 && hour < 17) {
-    return 'Good Afternoon!';
-  }
-  if (hour >= 17 && hour < 21) {
-    return 'Good Evening!';
-  }
-  return 'Good Night!';
-}
-
 bool isSameDay(DateTime date1, DateTime date2) {
   return date1.year == date2.year &&
       date1.month == date2.month &&

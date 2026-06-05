@@ -4,7 +4,7 @@ class ErrorHandler {
   ErrorHandler._();
 
   static String handle(dynamic e, {bool showToast = true}) {
-    String message = 'Something went wrong';
+    String message = LocalizationLabels.somethingWentWrong();
 
     if (e is AppException) {
       message = e.message;
@@ -12,7 +12,9 @@ class ErrorHandler {
       message = _handleDioError(e);
     } else {
       final fallback = e.toString().trim();
-      message = fallback.isEmpty ? 'Unexpected error occurred' : fallback;
+      message = fallback.isEmpty
+          ? LocalizationLabels.unexpectedError()
+          : fallback;
     }
 
     if (showToast) {
@@ -25,21 +27,21 @@ class ErrorHandler {
   static String _handleDioError(DioException e) {
     switch (e.type) {
       case DioExceptionType.connectionError:
-        return 'No internet connection';
+        return LocalizationLabels.noInternetConnection();
 
       case DioExceptionType.connectionTimeout:
       case DioExceptionType.sendTimeout:
       case DioExceptionType.receiveTimeout:
-        return 'Connection timeout';
+        return LocalizationLabels.connectionTimeout();
 
       case DioExceptionType.badResponse:
         return _extractServerMessage(e);
 
       case DioExceptionType.cancel:
-        return 'Request cancelled';
+        return LocalizationLabels.requestCancelled();
 
       default:
-        return 'Network error occurred';
+        return LocalizationLabels.networkError();
     }
   }
 
@@ -51,6 +53,6 @@ class ErrorHandler {
       }
     } catch (_) {}
 
-    return 'Server error occurred';
+    return LocalizationLabels.serverError();
   }
 }

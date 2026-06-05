@@ -1,7 +1,6 @@
 import 'dart:math';
 
 import 'package:society_managment/society_managment.dart';
-import 'package:society_managment/society_managment_extra.dart';
 
 class AppColors {
   static const Color primary = Color(0xFF8349E5);

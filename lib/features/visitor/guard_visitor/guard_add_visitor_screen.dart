@@ -129,7 +129,7 @@ class GuardAddVisitorScreen extends StatelessWidget {
                   hintText: l10n?.selectPurpose ?? '',
                   items: cubit.purposes,
                   value: state.purpose,
-                  itemAsString: (value) => value,
+                  itemAsString: (value) => LocalizationLabels.of(l10n, value),
                   onChanged: cubit.onPurposeChanged,
                   error: state.purposeError,
                 ),

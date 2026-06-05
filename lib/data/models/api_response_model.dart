@@ -66,6 +66,6 @@ class ApiResponseModel<T> {
       return (message as List).first.toString();
     }
 
-    return 'Something went wrong';
+    return LocalizationLabels.somethingWentWrong();
   }
 }

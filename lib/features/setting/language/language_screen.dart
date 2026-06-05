@@ -95,7 +95,12 @@ class LanguageItemWidget extends StatelessWidget {
           ),
           child: Row(
             children: [
-              Expanded(child: Text(lang.label, style: styleW500S16)),
+              Expanded(
+                child: Text(
+                  LocalizationLabels.languageLabel(context.l10n, lang.code),
+                  style: styleW500S16,
+                ),
+              ),
               if (isSelected)
                 Container(
                   height: 22.w,

@@ -1,5 +1,4 @@
 import 'package:society_managment/society_managment.dart';
-import 'package:society_managment/society_managment_extra.dart';
 
 part 'maintenance_state.dart';
 
@@ -8,7 +7,7 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
     MaintenanceTransaction(
       name: 'Suresh Doshi',
       flat: 'A-403',
-      category: 'Maintenance',
+      category: AppLabelKeys.maintenance,
       amount: '+3500',
       isCredit: true,
       date: '29 Apr',
@@ -16,7 +15,7 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
     MaintenanceTransaction(
       name: 'Meera Patel',
       flat: 'A-402',
-      category: 'Transfer Fees',
+      category: AppLabelKeys.transferFees,
       amount: '-15,000',
       isCredit: false,
       date: '29 Apr',
@@ -24,7 +23,7 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
     MaintenanceTransaction(
       name: 'Rahul Shah',
       flat: 'A-401',
-      category: 'Security Guard',
+      category: AppLabelKeys.securityGuard,
       amount: '+3500',
       isCredit: true,
       date: '29 Apr',
@@ -32,7 +31,7 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
     MaintenanceTransaction(
       name: 'Pooja Mehta',
       flat: 'A-404',
-      category: 'Maintenance',
+      category: AppLabelKeys.maintenance,
       amount: '+3500',
       isCredit: true,
       date: '28 Apr',
@@ -97,9 +96,9 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
     l10n?.december ?? '',
   ];
 
-  String netBalancePeriodLabel() {
+  String netBalancePeriodLabel(String localeName) {
     final month = state.focusedMonth ?? DateTime.now();
-    return DateFormat('MMMM yyyy').format(month).toUpperCase();
+    return LocalizationLabels.formatMonthYearUpper(month, localeName);
   }
 
   void onMonthSelected(int index) {

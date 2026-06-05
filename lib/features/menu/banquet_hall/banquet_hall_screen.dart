@@ -141,7 +141,7 @@ class _BanquetCalendarHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const weekDays = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+    final weekDays = LocalizationLabels.weekdayLabels(l10n);
 
     return Container(
       width: double.infinity,
@@ -195,7 +195,9 @@ class _BanquetCalendarHeader extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Text(
-                        cubit.monthYearLabel(),
+                        cubit.monthYearLabel(
+                          Localizations.localeOf(context).toString(),
+                        ),
                         style: styleW600S18.copyWith(color: AppColors.white),
                       ),
                       4.h.spaceVertical,

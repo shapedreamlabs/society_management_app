@@ -21,15 +21,15 @@ class AddFamilyMemberCubit extends Cubit<AddFamilyMemberState> {
   final String? _editingId;
 
   final List<String> occupations = const [
-    'Accountant',
-    'Engineer',
-    'Doctor',
-    'Teacher',
-    'Lawyer',
-    'Business',
-    'Student',
-    'Homemaker',
-    'Other',
+    AppLabelKeys.accountant,
+    AppLabelKeys.engineer,
+    AppLabelKeys.doctor,
+    AppLabelKeys.teacher,
+    AppLabelKeys.lawyer,
+    AppLabelKeys.business,
+    AppLabelKeys.student,
+    AppLabelKeys.homemaker,
+    AppLabelKeys.other,
   ];
 
   final TextEditingController nameController = TextEditingController();

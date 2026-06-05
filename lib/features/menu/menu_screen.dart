@@ -1,13 +1,7 @@
 import 'package:society_managment/society_managment.dart';
 
-class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key});
-
-  static const routeName = '/menu';
-
-  static Widget builder(BuildContext context) {
-    return const MenuScreen();
-  }
+class MenuDrawer extends StatelessWidget {
+  const MenuDrawer({super.key});
 
   List<MenuItemModel> _menuItems(AppLocalizations? l10n) {
     return [
@@ -49,14 +43,21 @@ class MenuScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final items = _menuItems(context.l10n);
 
-    return MenuListLayout(
-      items: items,
-      onItemTap: (item, _) {
-        final route = item.routeName;
-        if (route != null && route.isNotEmpty) {
-          context.navigator.pushNamed(route);
-        }
-      },
+    return Drawer(
+      backgroundColor: AppColors.white,
+      shape: const RoundedRectangleBorder(),
+      width: MediaQuery.of(context).size.width * 0.82,
+      child: MenuListLayout(
+        items: items,
+        onItemTap: (item, _) {
+          Navigator.pop(context);
+
+          final route = item.routeName;
+          if (route != null && route.isNotEmpty) {
+            context.navigator.pushNamed(route);
+          }
+        },
+      ),
     );
   }
 }

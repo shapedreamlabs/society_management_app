@@ -1,5 +1,4 @@
 import 'package:society_managment/society_managment.dart';
-import 'package:society_managment/society_managment_extra.dart';
 
 part 'banquet_hall_state.dart';
 
@@ -85,13 +84,13 @@ class BanquetHallCubit extends Cubit<BanquetHallState> {
     context.navigator.pushNamed(BookBanquetHallScreen.routeName);
   }
 
-  String monthYearLabel() {
-    return DateFormat('MMMM yyyy').format(state.focusedMonth);
+  String monthYearLabel(String localeName) {
+    return LocalizationLabels.formatMonthYear(state.focusedMonth, localeName);
   }
 
   String bookingCountLabel(AppLocalizations? l10n) {
     final count = state.bookedDays.length.toString().padLeft(2, '0');
-    return '$count ${l10n?.booking ?? 'Booking'}';
+    return '$count ${l10n?.booking ?? ''}';
   }
 
   int get daysInMonth {

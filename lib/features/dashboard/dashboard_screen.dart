@@ -30,6 +30,7 @@ class DashboardScreen extends StatelessWidget {
             }
           },
           child: Scaffold(
+            drawer: const MenuDrawer(),
             appBar: state.tabIndex == 0
                 ? CommonDashAppBar(showSearchBar: true)
                 : null,

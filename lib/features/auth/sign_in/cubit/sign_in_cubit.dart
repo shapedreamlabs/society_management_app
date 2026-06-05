@@ -61,7 +61,7 @@ class SignInCubit extends Cubit<SignInState> {
 
       if (!context.mounted) return;
 
-      showSuccessToast(context.l10n?.otpSentSuccess ?? 'OTP sent successfully');
+      showSuccessToast(context.l10n?.otpSentSuccess ?? '');
 
       context.navigator.pushNamed(
         OtpVerificationScreen.routeName,
@@ -72,7 +72,7 @@ class SignInCubit extends Cubit<SignInState> {
       );
     } catch (e) {
       showErrorToast(
-        context.l10n?.somethingWentWrong ?? 'Something went wrong',
+        context.l10n?.somethingWentWrong ?? '',
       );
     } finally {
       if (!isClosed) {

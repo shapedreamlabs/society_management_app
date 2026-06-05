@@ -33,13 +33,6 @@ class RouteService {
           settings: settings,
         );
 
-      /// Menu
-      case MenuScreen.routeName:
-        return MaterialPageRoute(
-          builder: MenuScreen.builder,
-          settings: settings,
-        );
-
       /// Notices
       case NoticesScreen.routeName:
         return MaterialPageRoute(
@@ -184,6 +177,20 @@ class RouteService {
       case AddExpenseScreen.routeName:
         return MaterialPageRoute(
           builder: AddExpenseScreen.builder,
+          settings: settings,
+        );
+
+      /// Transaction History
+      case TransactionHistoryScreen.routeName:
+        return MaterialPageRoute(
+          builder: TransactionHistoryScreen.builder,
+          settings: settings,
+        );
+
+      /// Maintenance History
+      case MaintenanceHistoryScreen.routeName:
+        return MaterialPageRoute(
+          builder: MaintenanceHistoryScreen.builder,
           settings: settings,
         );
 

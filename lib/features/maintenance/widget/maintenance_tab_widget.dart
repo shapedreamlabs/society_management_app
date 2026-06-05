@@ -103,7 +103,7 @@ class _NetMaintenanceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${l10n?.netMaintenance ?? ''} - ${cubit.netBalancePeriodLabel()}',
+            '${l10n?.netMaintenance ?? ''} - ${cubit.netBalancePeriodLabel(Localizations.localeOf(context).toString())}',
             style: styleW400S12.copyWith(
               color: AppColors.white.withValues(alpha: 0.8),
               letterSpacing: 0.5,

@@ -1,6 +1,5 @@
 // ignore: unused_import
 import 'package:intl/intl.dart' as intl;
-
 import 'app_localizations.dart';
 
 // ignore_for_file: type=lint
@@ -19,8 +18,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get manageEverythingInOnePlace => 'Manage Everything in One Place.';
 
   @override
-  String get onBoardingContent =>
-      'From maintenance to visitors, handle all society tasks effortlessly. Approve guests instantly and track every entry with ease. Pay dues, track history, and stay updated with clear records.';
+  String get onBoardingContent => 'From maintenance to visitors, handle all society tasks effortlessly. Approve guests instantly and track every entry with ease. Pay dues, track history, and stay updated with clear records.';
 
   @override
   String get getStarted => 'Get Started';
@@ -29,8 +27,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginNow => 'Login Now';
 
   @override
-  String get loginContent =>
-      'Login to manage your society activities seamlessly.';
+  String get loginContent => 'Login to manage your society activities seamlessly.';
 
   @override
   String get phoneNumber => 'Phone Number';
@@ -467,8 +464,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logOut => 'Logout';
 
   @override
-  String get logOutContent =>
-      'You will be logged out of your account and need to sign in again to continue.';
+  String get logOutContent => 'You will be logged out of your account and need to sign in again to continue.';
 
   @override
   String get yesLogout => 'Yes, Logout';
@@ -489,8 +485,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noInternet => 'No Internet';
 
   @override
-  String get noInternetDescription =>
-      'Please check your internet and refresh the page to continue.';
+  String get noInternetDescription => 'Please check your internet and refresh the page to continue.';
 
   @override
   String get retry => 'Retry';
@@ -538,8 +533,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteMember => 'Delete Member';
 
   @override
-  String get deleteMemberContent =>
-      'Are you sure you want to delete this family member.';
+  String get deleteMemberContent => 'Are you sure you want to delete this family member.';
 
   @override
   String get yesDelete => 'Yes, Delete';
@@ -580,8 +574,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectMonth => 'Select Month';
 
   @override
-  String get maintenanceSearchHint =>
-      'Search Transactions, Flats, Categories...';
+  String get maintenanceSearchHint => 'Search Transactions, Flats, Categories...';
 
   @override
   String get fundOverview => 'Fund Overview';
@@ -720,4 +713,237 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get paidTo => 'Paid To';
+
+  @override
+  String get fireDrillTodayTitle => 'Fire Drill Today At 6 PM';
+
+  @override
+  String get fireDrillTodaySubtitle => 'Assemble At Ground Floor Parking • All Wings';
+
+  @override
+  String get societyOverview => 'Society Overview';
+
+  @override
+  String get totalFlats => 'Total Flats';
+
+  @override
+  String get totalResidents => 'Total Residents';
+
+  @override
+  String get totalComplaints => 'Total Complains';
+
+  @override
+  String get totalBalance => 'Total Balance';
+
+  @override
+  String get recentComplaints => 'Recent Complaints';
+
+  @override
+  String get goodMorning => 'Good Morning!';
+
+  @override
+  String get goodAfternoon => 'Good Afternoon!';
+
+  @override
+  String get goodEvening => 'Good Evening!';
+
+  @override
+  String get goodNight => 'Good Night!';
+
+  @override
+  String get toastError => 'Error';
+
+  @override
+  String get toastSuccess => 'Success';
+
+  @override
+  String get unexpectedError => 'Unexpected error occurred';
+
+  @override
+  String get noInternetConnection => 'No internet connection';
+
+  @override
+  String get connectionTimeout => 'Connection timeout';
+
+  @override
+  String get requestCancelled => 'Request cancelled';
+
+  @override
+  String get networkError => 'Network error occurred';
+
+  @override
+  String get serverError => 'Server error occurred';
+
+  @override
+  String get checkInternetConnection => 'Check your internet connection!';
+
+  @override
+  String get defaultUserName => 'User';
+
+  @override
+  String get notAvailable => '-';
+
+  @override
+  String get priorityLow => 'Low';
+
+  @override
+  String get priorityMedium => 'Medium';
+
+  @override
+  String get priorityHigh => 'High';
+
+  @override
+  String get family => 'Family';
+
+  @override
+  String get other => 'Other';
+
+  @override
+  String get societyAdmin => 'Society Admin';
+
+  @override
+  String get paymentCash => 'Cash';
+
+  @override
+  String get paymentUpi => 'UPI';
+
+  @override
+  String get paymentBankTransfer => 'Bank Transfer';
+
+  @override
+  String get paymentCheque => 'Cheque';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get utilities => 'Utilities';
+
+  @override
+  String get repairs => 'Repairs';
+
+  @override
+  String get vendor => 'Vendor';
+
+  @override
+  String get purposeBirthdayCelebration => 'Birthday Celebration';
+
+  @override
+  String get purposeEngagementFunction => 'Engagement Function';
+
+  @override
+  String get purposeSocietyMeeting => 'Society Meeting';
+
+  @override
+  String get purposeDelivery => 'Delivery';
+
+  @override
+  String get purposeGuest => 'Guest';
+
+  @override
+  String get purposeService => 'Service';
+
+  @override
+  String get purposePersonal => 'Personal';
+
+  @override
+  String get occupationAccountant => 'Accountant';
+
+  @override
+  String get occupationEngineer => 'Engineer';
+
+  @override
+  String get occupationDoctor => 'Doctor';
+
+  @override
+  String get occupationTeacher => 'Teacher';
+
+  @override
+  String get occupationLawyer => 'Lawyer';
+
+  @override
+  String get occupationBusiness => 'Business';
+
+  @override
+  String get occupationStudent => 'Student';
+
+  @override
+  String get occupationHomemaker => 'Homemaker';
+
+  @override
+  String get languageEnglishUS => 'English (United States)';
+
+  @override
+  String get languageGujarati => 'Gujarati';
+
+  @override
+  String get languageHindi => 'Hindi';
+
+  @override
+  String get languageEnglish => 'English';
+
+  @override
+  String get am => 'AM';
+
+  @override
+  String get pm => 'PM';
+
+  @override
+  String get yesterday => 'Yesterday';
+
+  @override
+  String daysAgo(String count, String time) {
+    return '$count days ago, $time';
+  }
+
+  @override
+  String get weekdaySun => 'S';
+
+  @override
+  String get weekdayMon => 'M';
+
+  @override
+  String get weekdayTue => 'T';
+
+  @override
+  String get weekdayWed => 'W';
+
+  @override
+  String get weekdayThu => 'T';
+
+  @override
+  String get weekdayFri => 'F';
+
+  @override
+  String get weekdaySat => 'S';
+
+  @override
+  String get monthJan => 'Jan';
+
+  @override
+  String get monthFeb => 'Feb';
+
+  @override
+  String get monthMar => 'Mar';
+
+  @override
+  String get monthApr => 'Apr';
+
+  @override
+  String get monthMay => 'May';
+
+  @override
+  String get allWings => 'All Wings';
+
+  @override
+  String get badRequest => 'Bad request';
+
+  @override
+  String get sessionExpired => 'Session expired';
+
+  @override
+  String get accessDenied => 'Access denied';
+
+  @override
+  String get resourceNotFound => 'Resource not found';
 }

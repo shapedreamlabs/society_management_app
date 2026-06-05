@@ -14,6 +14,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = context.l10n;
+
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
         return Scaffold(
@@ -39,30 +41,23 @@ class HomeScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Fire Drill Today At 6 PM",
+                            l10n?.fireDrillTodayTitle ?? '',
                             style: styleW600S16.copyWith(color: AppColors.red),
                           ),
-
-                          // Space
                           8.h.spaceVertical,
-
                           Text(
-                            "Assemble At Ground Floor Parking • All Wings",
+                            l10n?.fireDrillTodaySubtitle ?? '',
                             style: styleW400S12.copyWith(color: AppColors.red),
                           ),
                         ],
                       ),
-
-                      Spacer(),
-
+                      const Spacer(),
                       SvgAsset(imagePath: AppAssets.forwardArrow),
                     ],
                   ),
                 ),
-
-                SocietyOverview(),
-
-                RecentComplaints(),
+                SocietyOverview(l10n: l10n),
+                RecentComplaints(l10n: l10n),
               ],
             ),
           ),

@@ -35,7 +35,7 @@ class VehicleLookupScreen extends StatelessWidget {
               Padding(
                 padding: .fromLTRB(
                   AppConstants.horizontalPadding,
-                  16.h,
+                  20.h,
                   AppConstants.horizontalPadding,
                   0.h,
                 ),
@@ -70,7 +70,10 @@ class VehicleLookupScreen extends StatelessWidget {
                           padding: .symmetric(vertical: 4.h),
                           itemCount: items.length,
                           separatorBuilder: (context, index) => Padding(
-                            padding: .symmetric(horizontal: 14.w),
+                            padding: .symmetric(
+                              horizontal: 14.w,
+                              vertical: 3.h,
+                            ),
                             child: CommonDivider(
                               color: AppColors.text.withValues(alpha: 0.1),
                             ),
@@ -99,16 +102,38 @@ class VehicleLookupScreen extends StatelessWidget {
                                         width: 48.w,
                                       ),
                               ),
-                              title: Text(
-                                item['vehicleNo'] ?? '',
-                                style: styleW500S16,
+                              horizontalTitleGap: 8.w,
+                              title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    item['vehicleNo'] ?? '',
+                                    style: styleW500S16,
+                                  ),
+
+                                  4.h.spaceVertical,
+
+                                  Text(
+                                    '${item['owner'] ?? ''} - ${item['flat'] ?? ''}',
+                                    style: styleW400S14.copyWith(
+                                      color: AppColors.text.withValues(
+                                        alpha: 0.6,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              subtitle: Text(
-                                '${item['owner'] ?? ''} - ${item['flat'] ?? ''}',
-                                style: styleW400S14.copyWith(
-                                  color: AppColors.text.withValues(alpha: 0.6),
-                                ),
-                              ),
+                              // Text(
+                              //   item['vehicleNo'] ?? '',
+                              //   style: styleW500S16,
+                              // ),
+                              //
+                              // subtitle: Text(
+                              //   '${item['owner'] ?? ''} - ${item['flat'] ?? ''}',
+                              //   style: styleW400S14.copyWith(
+                              //     color: AppColors.text.withValues(alpha: 0.6),
+                              //   ),
+                              // ),
                             );
                           },
                         ),

@@ -27,7 +27,13 @@ class OtpVerificationScreen extends StatelessWidget {
         final cubit = context.read<OtpVerificationCubit>();
 
         return Scaffold(
-          appBar: CustomAppBar(title: l10n?.otpVerification ?? ""),
+          appBar: CustomAppBar(
+            title: l10n?.otpVerification ?? "",
+            centerTitle: true,
+            color: AppColors.bgColor,
+            titleStyle: styleW500S24,
+            backIconColor: AppColors.text,
+          ),
           bottomNavigationBar: Container(
             color: AppColors.bgColor,
             margin: .all(20.h),

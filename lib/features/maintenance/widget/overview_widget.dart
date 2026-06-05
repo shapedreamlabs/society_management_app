@@ -107,6 +107,12 @@ class OverviewBody extends StatelessWidget {
             l10n: l10n,
             transactions: cubit.overviewTransactions(),
             maintenanceItems: cubit.overviewMaintenanceItems(),
+            onTransactionViewAll: () => context.navigator.pushNamed(
+              TransactionHistoryScreen.routeName,
+            ),
+            onMaintenanceViewAll: () => context.navigator.pushNamed(
+              MaintenanceHistoryScreen.routeName,
+            ),
           ),
         ],
       ),
@@ -140,7 +146,7 @@ class _NetBalanceCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '${l10n?.netBalance ?? ''} - ${cubit.netBalancePeriodLabel()}',
+            '${l10n?.netBalance ?? ''} - ${cubit.netBalancePeriodLabel(Localizations.localeOf(context).toString())}',
             style: styleW400S12.copyWith(
               color: AppColors.white.withValues(alpha: 0.8),
               letterSpacing: 0.5,

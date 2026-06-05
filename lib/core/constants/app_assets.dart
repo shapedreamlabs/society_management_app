@@ -49,6 +49,7 @@ abstract class AppAssets {
   static const buildingImg = "${_images}building.png";
   static const calenderFillImg = "${_images}calender_fill.png";
   static const defaultProfileImg = "${_images}default_profile.jpg";
+  static const grillImg = "${_images}grill.png";
   static const maintenanceImg = "${_images}maintenance.png";
   static const moneyImg = "${_images}money.png";
   static const moneyBagImg = "${_images}money_bag.png";

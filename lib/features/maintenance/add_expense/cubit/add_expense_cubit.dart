@@ -6,23 +6,23 @@ class AddExpenseCubit extends Cubit<AddExpenseState> {
   AddExpenseCubit() : super(const AddExpenseState());
 
   final List<String> categories = const [
-    'Maintenance',
-    'Security',
-    'Utilities',
-    'Repairs',
-    'Other',
+    AppLabelKeys.maintenance,
+    AppLabelKeys.security,
+    AppLabelKeys.utilities,
+    AppLabelKeys.repairs,
+    AppLabelKeys.other,
   ];
   final List<String> persons = const [
     'Suresh Doshi',
     'Meera Patel',
     'Rahul Shah',
-    'Vendor',
+    AppLabelKeys.vendor,
   ];
   final List<String> paymentMethods = const [
-    'Cash',
-    'UPI',
-    'Bank Transfer',
-    'Cheque',
+    AppLabelKeys.cash,
+    AppLabelKeys.upi,
+    AppLabelKeys.bankTransfer,
+    AppLabelKeys.cheque,
   ];
 
   final TextEditingController titleController = TextEditingController();

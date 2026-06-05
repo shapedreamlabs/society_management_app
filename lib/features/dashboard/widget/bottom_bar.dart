@@ -18,13 +18,13 @@ class BottomBar extends StatelessWidget {
           // border: Border(
           //   top: BorderSide(color: AppColors.primary.withValues(alpha: 0.1)),
           // ),
-          // boxShadow: [
-          //   BoxShadow(
-          //     color: AppColors.primary.withValues(alpha: 0.08),
-          //     blurRadius: 18,
-          //     offset: const Offset(0, -4),
-          //   ),
-          // ],
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.orange.withValues(alpha: 0.08),
+              blurRadius: 18,
+              offset: const Offset(0, -4),
+            ),
+          ],
         ),
         child: Row(
           children: [

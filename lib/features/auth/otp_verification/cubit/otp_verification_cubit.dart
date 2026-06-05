@@ -54,13 +54,13 @@ class OtpVerificationCubit extends Cubit<OtpVerificationState> {
 
       if (!context.mounted) return;
 
-      showSuccessToast(context.l10n?.otpSentSuccess ?? 'OTP sent successfully');
+      showSuccessToast(context.l10n?.otpSentSuccess ?? '');
       otpController.clear();
       refresh(state.copyWith(isOTPValidate: false, otpError: ""));
       startTimer();
     } catch (e) {
       showErrorToast(
-        context.l10n?.somethingWentWrong ?? 'Something went wrong',
+        context.l10n?.somethingWentWrong ?? '',
       );
     } finally {
       if (!isClosed) {
@@ -103,7 +103,7 @@ class OtpVerificationCubit extends Cubit<OtpVerificationState> {
 
       if (!context.mounted) return;
 
-      showSuccessToast(context.l10n?.loginSuccess ?? 'Login successful');
+      showSuccessToast(context.l10n?.loginSuccess ?? '');
 
       context.navigator.pushNamedAndRemoveUntil(
         DashboardScreen.routeName,
@@ -111,7 +111,7 @@ class OtpVerificationCubit extends Cubit<OtpVerificationState> {
       );
     } catch (e) {
       showErrorToast(
-        context.l10n?.somethingWentWrong ?? 'Something went wrong',
+        context.l10n?.somethingWentWrong ?? '',
       );
     } finally {
       if (!isClosed) {

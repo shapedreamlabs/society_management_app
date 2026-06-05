@@ -6,10 +6,10 @@ class UserAddVisitorCubit extends Cubit<UserAddVisitorState> {
   UserAddVisitorCubit() : super(const UserAddVisitorState());
 
   final List<String> purposes = const [
-    'Delivery',
-    'Guest',
-    'Service',
-    'Personal',
+    AppLabelKeys.delivery,
+    AppLabelKeys.guest,
+    AppLabelKeys.service,
+    AppLabelKeys.personal,
   ];
 
   final TextEditingController nameController = TextEditingController();
@@ -59,6 +59,7 @@ class UserAddVisitorCubit extends Cubit<UserAddVisitorState> {
   }
 
   Future<void> pickVisitTime(BuildContext context) async {
+    final l10n = context.l10n;
     final pickedTime = await showTimePicker(
       context: context,
       initialTime: TimeOfDay.now(),
@@ -67,7 +68,12 @@ class UserAddVisitorCubit extends Cubit<UserAddVisitorState> {
       return;
     }
 
-    refresh(state.copyWith(visitTime: _formatTime(pickedTime), timeError: ''));
+    refresh(
+      state.copyWith(
+        visitTime: _formatTime(l10n, pickedTime),
+        timeError: '',
+      ),
+    );
   }
 
   String _formatDate(DateTime pickedDate) {
@@ -77,10 +83,10 @@ class UserAddVisitorCubit extends Cubit<UserAddVisitorState> {
     return '$day/$month/$year';
   }
 
-  String _formatTime(TimeOfDay pickedTime) {
+  String _formatTime(AppLocalizations? l10n, TimeOfDay pickedTime) {
     final hour = pickedTime.hourOfPeriod == 0 ? 12 : pickedTime.hourOfPeriod;
     final minute = pickedTime.minute.toString().padLeft(2, '0');
-    final period = pickedTime.period == DayPeriod.am ? 'AM' : 'PM';
+    final period = LocalizationLabels.timePeriod(l10n, pickedTime.period);
     return '$hour:$minute $period';
   }
 

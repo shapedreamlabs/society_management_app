@@ -7,7 +7,6 @@ class MonthlyTrendsChart extends StatelessWidget {
 
   final AppLocalizations? l10n;
 
-  static const List<String> _monthLabels = ['Jan', 'Feb', 'Mar', 'Apr', 'May'];
   static const List<double> _incomeValues = [60, 70, 65, 50, 48];
   static const List<double> _expenseValues = [45, 22, 50, 35, 70];
 
@@ -33,6 +32,7 @@ class MonthlyTrendsChart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final monthLabels = LocalizationLabels.shortMonthLabels(l10n);
     final scale = _computeScale([..._incomeValues, ..._expenseValues]);
     final maxY = scale.maxY;
     final interval = scale.interval;
@@ -110,13 +110,13 @@ class MonthlyTrendsChart extends StatelessWidget {
                       reservedSize: 28.h,
                       getTitlesWidget: (value, meta) {
                         final index = value.toInt();
-                        if (index < 0 || index >= _monthLabels.length) {
+                        if (index < 0 || index >= monthLabels.length) {
                           return const SizedBox.shrink();
                         }
                         return SideTitleWidget(
                           meta: meta,
                           child: Text(
-                            _monthLabels[index],
+                            monthLabels[index],
                             style: styleW400S12.copyWith(
                               color: AppColors.text.withValues(alpha: 0.6),
                             ),
@@ -126,7 +126,7 @@ class MonthlyTrendsChart extends StatelessWidget {
                     ),
                   ),
                 ),
-                barGroups: List.generate(_monthLabels.length, (index) {
+                barGroups: List.generate(monthLabels.length, (index) {
                   return BarChartGroupData(
                     x: index,
                     barsSpace: 6,

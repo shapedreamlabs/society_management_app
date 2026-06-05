@@ -72,7 +72,7 @@ class OnboardingScreen extends StatelessWidget {
                             onTap: () => cubit.onTapGetStarted(context),
                           ),
 
-                          30.h.spaceVertical,
+                          0.h.spaceVertical,
                         ],
                       ),
                     ),

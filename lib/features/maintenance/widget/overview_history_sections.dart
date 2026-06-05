@@ -6,25 +6,32 @@ class OverviewHistorySections extends StatelessWidget {
     required this.l10n,
     required this.transactions,
     required this.maintenanceItems,
+    this.onTransactionViewAll,
+    this.onMaintenanceViewAll,
   });
 
   final AppLocalizations? l10n;
   final List<MaintenanceTransaction> transactions;
   final List<MaintenanceMember> maintenanceItems;
+  final VoidCallback? onTransactionViewAll;
+  final VoidCallback? onMaintenanceViewAll;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        _SectionHeader(
+        headerRow(
           title: l10n?.transactionHistory ?? '',
           actionLabel: l10n?.viewAll ?? '',
+          onActionTap: onTransactionViewAll,
         ),
+
         12.h.spaceVertical,
-        _OverviewListCard(
+
+        overViewListCard(
           child: transactions.isEmpty
-              ? _EmptyMessage(message: l10n?.noTransactionsAvailable ?? '')
+              ? emptyMessage(message: l10n?.noTransactionsAvailable ?? '')
               : ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -39,19 +46,25 @@ class OverviewHistorySections extends StatelessWidget {
                   itemBuilder: (_, index) {
                     return _TransactionHistoryTile(
                       transaction: transactions[index],
+                      l10n: l10n,
                     );
                   },
                 ),
         ),
+
         20.h.spaceVertical,
-        _SectionHeader(
+
+        headerRow(
           title: l10n?.maintenance ?? '',
           actionLabel: l10n?.viewAll ?? '',
+          onActionTap: onMaintenanceViewAll,
         ),
+
         12.h.spaceVertical,
-        _OverviewListCard(
+
+        overViewListCard(
           child: maintenanceItems.isEmpty
-              ? _EmptyMessage(message: l10n?.noTransactionsAvailable ?? '')
+              ? emptyMessage(message: l10n?.noTransactionsAvailable ?? '')
               : ListView.separated(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
@@ -74,38 +87,31 @@ class OverviewHistorySections extends StatelessWidget {
       ],
     );
   }
-}
 
-class _SectionHeader extends StatelessWidget {
-  const _SectionHeader({required this.title, required this.actionLabel});
-
-  final String title;
-  final String actionLabel;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget headerRow({
+    required String title,
+    required String actionLabel,
+    VoidCallback? onActionTap,
+  }) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(title, style: styleW600S18),
-        Text(
-          actionLabel,
-          style: styleW400S16.copyWith(
-            color: AppColors.text.withValues(alpha: 0.6),
+
+        GestureDetector(
+          onTap: onActionTap,
+          child: Text(
+            actionLabel,
+            style: styleW400S16.copyWith(
+              color: AppColors.text.withValues(alpha: 0.6),
+            ),
           ),
         ),
       ],
     );
   }
-}
 
-class _OverviewListCard extends StatelessWidget {
-  const _OverviewListCard({required this.child});
-
-  final Widget child;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget overViewListCard({required Widget child}) {
     return Container(
       width: double.infinity,
       decoration: BoxDecoration(
@@ -123,15 +129,8 @@ class _OverviewListCard extends StatelessWidget {
       child: child,
     );
   }
-}
 
-class _EmptyMessage extends StatelessWidget {
-  const _EmptyMessage({required this.message});
-
-  final String message;
-
-  @override
-  Widget build(BuildContext context) {
+  Widget emptyMessage({required String message}) {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 28.h),
       child: Center(
@@ -147,9 +146,10 @@ class _EmptyMessage extends StatelessWidget {
 }
 
 class _TransactionHistoryTile extends StatelessWidget {
-  const _TransactionHistoryTile({required this.transaction});
+  const _TransactionHistoryTile({required this.transaction, required this.l10n});
 
   final MaintenanceTransaction transaction;
+  final AppLocalizations? l10n;
 
   @override
   Widget build(BuildContext context) {
@@ -180,7 +180,7 @@ class _TransactionHistoryTile extends StatelessWidget {
                 ),
                 2.h.spaceVertical,
                 Text(
-                  transaction.category,
+                  LocalizationLabels.of(l10n, transaction.category),
                   style: styleW400S14.copyWith(
                     color: AppColors.text.withValues(alpha: 0.6),
                   ),

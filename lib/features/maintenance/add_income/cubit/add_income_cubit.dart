@@ -6,22 +6,22 @@ class AddIncomeCubit extends Cubit<AddIncomeState> {
   AddIncomeCubit() : super(const AddIncomeState());
 
   final List<String> categories = const [
-    'Maintenance',
-    'Banquet Hall',
-    'Festival Fund',
-    'Other',
+    AppLabelKeys.maintenance,
+    AppLabelKeys.banquetHall,
+    AppLabelKeys.festivalFund,
+    AppLabelKeys.other,
   ];
   final List<String> persons = const [
     'Suresh Doshi',
     'Meera Patel',
     'Rahul Shah',
-    'Society Admin',
+    AppLabelKeys.societyAdmin,
   ];
   final List<String> paymentMethods = const [
-    'Cash',
-    'UPI',
-    'Bank Transfer',
-    'Cheque',
+    AppLabelKeys.cash,
+    AppLabelKeys.upi,
+    AppLabelKeys.bankTransfer,
+    AppLabelKeys.cheque,
   ];
 
   final TextEditingController titleController = TextEditingController();

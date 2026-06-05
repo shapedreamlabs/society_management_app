@@ -41,28 +41,43 @@ class AuthInterceptor extends Interceptor {
 
   AppException _mapDioError(DioException err) {
     if (err.type == .connectionTimeout || err.type == .receiveTimeout) {
-      return AppException(message: 'Connection timeout');
+      return AppException(message: LocalizationLabels.connectionTimeout());
     }
 
     if (err.type == .connectionError) {
-      return AppException(message: 'No internet connection');
+      return AppException(message: LocalizationLabels.noInternetConnection());
     }
 
     final status = err.response?.statusCode;
 
     switch (status) {
       case 400:
-        return AppException(message: 'Bad request', statusCode: 400);
+        return AppException(
+          message: LocalizationLabels.badRequest(),
+          statusCode: 400,
+        );
       case 401:
-        return AppException(message: 'Session expired', statusCode: 401);
+        return AppException(
+          message: LocalizationLabels.sessionExpired(),
+          statusCode: 401,
+        );
       case 403:
-        return AppException(message: 'Access denied', statusCode: 403);
+        return AppException(
+          message: LocalizationLabels.accessDenied(),
+          statusCode: 403,
+        );
       case 404:
-        return AppException(message: 'Resource not found', statusCode: 404);
+        return AppException(
+          message: LocalizationLabels.resourceNotFound(),
+          statusCode: 404,
+        );
       case 500:
-        return AppException(message: 'Server error', statusCode: 500);
+        return AppException(
+          message: LocalizationLabels.serverError(),
+          statusCode: 500,
+        );
       default:
-        return AppException(message: 'Something went wrong');
+        return AppException(message: LocalizationLabels.somethingWentWrong());
     }
   }
 

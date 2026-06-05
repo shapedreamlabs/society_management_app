@@ -8,29 +8,26 @@ class MenuListLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.white,
-      body: Column(
-        children: [
-          const _MenuListHeader(),
-          Expanded(
-            child: ListView.separated(
-              padding: .all(AppConstants.horizontalPadding),
-              itemCount: items.length,
-              separatorBuilder: (_, _) => 12.h.spaceVertical,
-              itemBuilder: (context, index) {
-                final item = items[index];
-                return _MenuListTile(
-                  item: item,
-                  onTap: onItemTap == null
-                      ? null
-                      : () => onItemTap!(item, index),
-                );
-              },
-            ),
+    return Column(
+      children: [
+        const _MenuListHeader(),
+        Expanded(
+          child: ListView.separated(
+            padding: .all(AppConstants.horizontalPadding),
+            itemCount: items.length,
+            separatorBuilder: (_, _) => 12.h.spaceVertical,
+            itemBuilder: (context, index) {
+              final item = items[index];
+              return _MenuListTile(
+                item: item,
+                onTap: onItemTap == null
+                    ? null
+                    : () => onItemTap!(item, index),
+              );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
@@ -73,14 +70,14 @@ class _MenuListHeader extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  greetingText,
+                  LocalizationLabels.greeting(context.l10n),
                   style: styleW400S14.copyWith(
                     color: AppColors.white.withValues(alpha: 0.8),
                   ),
                 ),
                 4.h.spaceVertical,
                 Text(
-                  userModel?.name ?? "-",
+                  userModel?.name ?? (context.l10n?.notAvailable ?? ''),
                   maxLines: 1,
                   overflow: .ellipsis,
                   style: styleW600S20.copyWith(color: AppColors.white),

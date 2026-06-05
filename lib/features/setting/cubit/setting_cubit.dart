@@ -44,7 +44,7 @@ class SettingCubit extends Cubit<SettingState> {
     refresh(
       state.copyWith(
         settings: settings,
-        name: userModel?.name ?? "User",
+        name: userModel?.name ?? '',
         phone: userModel?.phone ?? "",
         avatar: userModel?.image ?? "",
       ),
@@ -55,7 +55,7 @@ class SettingCubit extends Cubit<SettingState> {
     try {
       refresh(
         state.copyWith(
-          name: userModel?.name ?? "User",
+          name: userModel?.name ?? '',
           phone: userModel?.phone ?? "",
           avatar: userModel?.image ?? "",
         ),

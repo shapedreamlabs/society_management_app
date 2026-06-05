@@ -1,7 +1,9 @@
 import 'package:society_managment/society_managment.dart';
 
 class RecentComplaints extends StatelessWidget {
-  const RecentComplaints({super.key});
+  const RecentComplaints({super.key, required this.l10n});
+
+  final AppLocalizations? l10n;
 
   @override
   Widget build(BuildContext context) {
@@ -11,17 +13,15 @@ class RecentComplaints extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text("Recent Complaints", style: styleW500S20),
-
+            Text(l10n?.recentComplaints ?? '', style: styleW500S20),
             Text(
-              "View All",
+              l10n?.viewAll ?? '',
               style: styleW400S16.copyWith(
                 color: AppColors.text.withValues(alpha: 0.6),
               ),
             ),
           ],
         ),
-
         Container(
           padding: .symmetric(vertical: 12.h),
           decoration: BoxDecoration(
@@ -30,7 +30,7 @@ class RecentComplaints extends StatelessWidget {
             border: Border.all(color: AppColors.text.withValues(alpha: 0.05)),
           ),
           child: ListView.separated(
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: 10,
             separatorBuilder: (context, index) {
@@ -51,18 +51,15 @@ class RecentComplaints extends StatelessWidget {
                     width: 48.w,
                   ),
                 ),
-
                 title: Text("Water Leakage – A-403", style: styleW500S16),
-
                 subtitle: Text(
                   "Suresh Patel • 2 hrs ago",
                   style: styleW500S16.copyWith(
                     color: AppColors.text.withValues(alpha: 0.6),
                   ),
                 ),
-
                 trailing: Container(
-                  width: 60.w,
+                  width: 57.w,
                   height: 25.h,
                   decoration: BoxDecoration(
                     color: AppColors.red.withValues(alpha: 0.1),
@@ -70,7 +67,7 @@ class RecentComplaints extends StatelessWidget {
                   ),
                   alignment: Alignment.center,
                   child: Text(
-                    "Urgent",
+                    l10n?.urgent ?? '',
                     style: styleW500S12.copyWith(color: AppColors.darkRed),
                   ),
                 ),

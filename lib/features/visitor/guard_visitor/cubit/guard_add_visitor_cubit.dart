@@ -17,10 +17,10 @@ class GuardAddVisitorCubit extends Cubit<GuardAddVisitorState> {
     '305',
   ];
   final List<String> purposes = const [
-    'Delivery',
-    'Guest',
-    'Service',
-    'Personal',
+    AppLabelKeys.delivery,
+    AppLabelKeys.guest,
+    AppLabelKeys.service,
+    AppLabelKeys.personal,
   ];
 
   final TextEditingController nameController = TextEditingController();

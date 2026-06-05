@@ -65,9 +65,12 @@ class AddComplainScreen extends StatelessWidget {
                 14.h.spaceVertical,
                 AppTextField(
                   header: l10n?.date ?? "",
-                  hintText: l10n?.selectDate ?? "",
+                  hintText: state.date.isEmpty
+                      ? (l10n?.selectDate ?? "")
+                      : state.date,
                   suffixIcon: AppAssets.calender,
                   readOnly: true,
+                  onTap: () => cubit.pickDate(context),
                 ),
                 14.h.spaceVertical,
                 AppDropDown<String>(
@@ -75,7 +78,7 @@ class AddComplainScreen extends StatelessWidget {
                   hintText: l10n?.selectPriority ?? "",
                   items: cubit.priorities,
                   value: state.priority,
-                  itemAsString: (value) => value,
+                  itemAsString: (value) => LocalizationLabels.of(l10n, value),
                   onChanged: cubit.onPriorityChanged,
                 ),
               ],
