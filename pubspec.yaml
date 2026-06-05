@@ -1,0 +1,102 @@
+name: society_managment
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.0
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  # -------------------------- Internationalization -------------------------- #
+  flutter_localizations:
+    sdk: flutter
+
+  # -------------------------- Dart Methods -------------------------- #
+  intl: ^0.20.2
+
+  # -------------------------- State Management -------------------------- #
+  flutter_bloc: ^9.1.1
+  equatable: ^2.0.8
+
+  # -------------------------- Responsiveness -------------------------- #
+  flutter_screenutil: ^5.9.3
+
+  # -------------------------- Local storage -------------------------- #
+  shared_preferences: ^2.5.5
+  cached_network_image: ^3.4.1
+
+  # -------------------------- UI -------------------------- #
+  cupertino_icons: ^1.0.9
+  flutter_svg: ^2.3.0
+  shimmer: ^3.0.0
+  oktoast: ^3.4.0
+  flutter_native_splash: ^2.4.8
+  pinput: ^6.0.1
+  carousel_slider: ^5.1.2
+  dotted_border: ^3.1.0
+  dynamic_height_grid_view: ^0.0.4
+
+  # -------------------------- API Calling -------------------------- #
+  dio: ^5.9.2
+
+  #_______________________ Media Specific _______________________
+  image_picker: ^1.2.2
+  path_provider: ^2.1.5
+  open_file: ^3.5.11
+  file_picker: ^11.0.2
+  flutter_image_compress: ^2.4.0
+
+  # -------------------------- Redirection -------------------------- #
+  url_launcher: ^6.3.2
+
+  # -------------------------- Internet Connection Checker -------------------------- #
+  internet_connection_checker_plus: ^3.0.1
+  fl_chart: ^1.2.0
+  country_code_picker: ^3.4.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  flutter_lints: ^6.0.0
+
+flutter:
+  generate: true
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/fonts/
+    - assets/icons/
+    - assets/images/
+
+  fonts:
+    - family: Outfit
+      fonts:
+        - asset: assets/fonts/Outfit-ExtraLight.ttf
+          weight: 400
+        - asset: assets/fonts/Outfit-Light.ttf
+          weight: 500
+        - asset: assets/fonts/Outfit-Medium.ttf
+          weight: 600
+        - asset: assets/fonts/Outfit-SemiBold.ttf
+          weight: 700
+        - asset: assets/fonts/Outfit-Bold.ttf
+          weight: 800
+
+
+flutter_native_splash:
+  color: "#1E2A3A"
+  fullscreen: true
+  image: assets/images/logo_2.png
+  android_12:
+    color: "#1E2A3A"
+    fullscreen: true
+    image: assets/images/logo_2.png
