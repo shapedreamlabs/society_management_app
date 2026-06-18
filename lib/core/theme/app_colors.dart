@@ -3,7 +3,8 @@ import 'dart:math';
 import 'package:society_managment/society_managment.dart';
 
 class AppColors {
-  static const Color primary = Color(0xFF8349E5);
+  static const Color primary = Color(0xFFFFA565);
+  static const Color booked = Color(0xFF701DA1);
   static const Color text = Color(0xFF15161A);
   static const Color black = Color(0xFF000000);
   static const Color white = Color(0xFFFFFFFF);
@@ -28,8 +29,13 @@ class AppColors {
   static const Color grey = Color(0xFF5C5F68);
   static const Color grey1 = Color(0xFF2A3A0A);
   static const Color skyBlue = Color(0xFF65B4FF);
-  static const Color peach = Color(0xFFFFA565);
+  static const Color peach = primary;
   static const Color goldenYellow = Color(0xFFFFD265);
+
+  static Color get inputEnabledBorder => text.withValues(alpha: 0.12);
+  static Color get inputFocusedBorder => primary;
+  static Color get inputErrorBorder => red;
+  static Color get inputDisabledBorder => text.withValues(alpha: 0.06);
 
   ///
   static MaterialColor generateMaterialColor() {
@@ -104,5 +110,34 @@ class AppColors {
     useMaterial3: true,
     fontFamily: AppAssets.outfit,
     scaffoldBackgroundColor: bgColor,
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: white,
+      hintStyle: TextStyle(color: grey, fontFamily: AppAssets.outfit),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: inputEnabledBorder),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: inputFocusedBorder, width: 1.5),
+      ),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: red),
+      ),
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: const BorderSide(color: red, width: 1.5),
+      ),
+      disabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: inputDisabledBorder),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(8),
+        borderSide: BorderSide(color: inputEnabledBorder),
+      ),
+    ),
   );
 }

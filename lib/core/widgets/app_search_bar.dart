@@ -34,27 +34,22 @@ class AppSearchBar extends StatelessWidget {
         ),
         filled: true,
         fillColor: AppColors.white,
-        border: inputBorder(),
-        focusedBorder: inputBorder().copyWith(
-          borderSide: BorderSide(color: AppColors.primary),
+        border: AppInputBorders.outline(radius: 12.r),
+        focusedBorder: AppInputBorders.outline(radius: 12.r, isFocused: true),
+        disabledBorder: AppInputBorders.outline(radius: 12.r, isDisabled: true),
+        errorBorder: AppInputBorders.outline(radius: 12.r, hasError: true),
+        focusedErrorBorder: AppInputBorders.outline(
+          radius: 12.r,
+          hasError: true,
+          isFocused: true,
         ),
-        disabledBorder: inputBorder(),
-        errorBorder: inputBorder(),
-        focusedErrorBorder: inputBorder(),
-        enabledBorder: inputBorder(),
+        enabledBorder: AppInputBorders.outline(radius: 12.r),
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 15.w, right: 10.w),
           child: SvgAsset(imagePath: AppAssets.search, width: 20.w),
         ),
         prefixIconConstraints: BoxConstraints(maxWidth: 45.w, maxHeight: 45.w),
       ),
-    );
-  }
-
-  InputBorder inputBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(12.r),
-      borderSide: BorderSide(color: AppColors.text.withValues(alpha: 0.05)),
     );
   }
 }

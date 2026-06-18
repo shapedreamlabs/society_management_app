@@ -194,6 +194,13 @@ class RouteService {
           settings: settings,
         );
 
+      /// Visitor History
+      case VisitorHistoryScreen.routeName:
+        return MaterialPageRoute(
+          builder: VisitorHistoryScreen.builder,
+          settings: settings,
+        );
+
       default:
         return MaterialPageRoute(
           builder: (context) => UnknownScreen(),

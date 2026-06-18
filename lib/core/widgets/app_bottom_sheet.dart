@@ -86,6 +86,7 @@ class LogOutWidget extends StatelessWidget {
               ),
             ),
           ),
+
           Container(
             padding: .all(10.w),
             decoration: BoxDecoration(
@@ -118,16 +119,21 @@ class LogOutWidget extends StatelessWidget {
               ),
             ),
           ),
+
           Padding(
             padding: EdgeInsets.only(top: 20.h, bottom: 12.h),
             child: Text(l10n?.logOut ?? "", style: styleW700S20),
           ),
+
           Text(
             l10n?.logOutContent ?? "",
             textAlign: .center,
             style: styleW400S14.copyWith(color: AppColors.grey),
           ),
+
+          // Space
           20.h.spaceVertical,
+
           CustomButton(
             title: l10n?.yesLogout ?? "",
             onTap: () async {
@@ -209,10 +215,15 @@ class SureToExitSheetWidget extends StatelessWidget {
             textAlign: .center,
             style: styleW400S14.copyWith(color: AppColors.grey),
           ),
+
+          // Space
           20.h.spaceVertical,
+
           CustomButton(
             title: l10n?.yesExitNow ?? "",
-            onTap: context.navigator.pop,
+            onTap: () {
+              SystemNavigator.pop();
+            },
           ),
         ],
       ),

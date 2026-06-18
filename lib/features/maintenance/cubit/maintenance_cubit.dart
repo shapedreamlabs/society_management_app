@@ -149,17 +149,23 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
   List<MaintenanceMember> maintenanceMembers() {
     Iterable<MaintenanceMember> members = state.members;
 
-    switch (state.memberFilter) {
-      case MaintenanceMemberFilter.pending:
-        members = members.where(
-          (member) => member.status == MaintenancePaymentStatus.pending,
-        );
-      case MaintenanceMemberFilter.completed:
-        members = members.where(
-          (member) => member.status == MaintenancePaymentStatus.completed,
-        );
-      case MaintenanceMemberFilter.all:
-        break;
+    if (state.isMemberEditMode) {
+      members = members.where(
+        (member) => member.status == MaintenancePaymentStatus.pending,
+      );
+    } else {
+      switch (state.memberFilter) {
+        case MaintenanceMemberFilter.pending:
+          members = members.where(
+            (member) => member.status == MaintenancePaymentStatus.pending,
+          );
+        case MaintenanceMemberFilter.completed:
+          members = members.where(
+            (member) => member.status == MaintenancePaymentStatus.completed,
+          );
+        case MaintenanceMemberFilter.all:
+          break;
+      }
     }
 
     final query = state.searchQuery.trim().toLowerCase();
@@ -175,7 +181,32 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
         .toList();
   }
 
+  void enterMemberEditMode() {
+    final members = state.members
+        .map((member) => member.copyWith(isSelected: false))
+        .toList();
+
+    emit(
+      state.copyWith(
+        isMemberEditMode: true,
+        members: members,
+      ),
+    );
+  }
+
+  void exitMemberEditMode() {
+    final members = state.members
+        .map((member) => member.copyWith(isSelected: false))
+        .toList();
+
+    emit(state.copyWith(isMemberEditMode: false, members: members));
+  }
+
   void toggleMemberSelected(String id) {
+    if (!state.isMemberEditMode) {
+      return;
+    }
+
     final members = state.members
         .map(
           (member) => member.id == id
@@ -187,25 +218,47 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
   }
 
   void toggleSelectAllMembers() {
-    final allSelected = state.members.every((member) => member.isSelected);
+    if (!state.isMemberEditMode) {
+      return;
+    }
+
+    final pendingMembers = state.members.where(
+      (member) => member.status == MaintenancePaymentStatus.pending,
+    );
+    final pendingIds = pendingMembers.map((member) => member.id).toSet();
+    final allSelected = pendingMembers.every((member) => member.isSelected);
+
     final members = state.members
-        .map((member) => member.copyWith(isSelected: !allSelected))
+        .map(
+          (member) => pendingIds.contains(member.id)
+              ? member.copyWith(isSelected: !allSelected)
+              : member.copyWith(isSelected: false),
+        )
         .toList();
     emit(state.copyWith(members: members));
   }
 
   void onMaintenanceFabPressed() {
+    if (!state.isMemberEditMode) {
+      return;
+    }
+
     final selectedIds = state.members
-        .where((member) => member.isSelected)
+        .where(
+          (member) =>
+              member.isSelected &&
+              member.status == MaintenancePaymentStatus.pending,
+        )
         .map((member) => member.id)
-        .toSet();
+        .toList();
     if (selectedIds.isEmpty) {
       return;
     }
 
+    final selectedIdSet = selectedIds.toSet();
     final members = state.members
         .map(
-          (member) => selectedIds.contains(member.id)
+          (member) => selectedIdSet.contains(member.id)
               ? member.copyWith(
                   status: MaintenancePaymentStatus.completed,
                   isSelected: false,
@@ -213,6 +266,12 @@ class MaintenanceCubit extends Cubit<MaintenanceState> {
               : member,
         )
         .toList();
-    emit(state.copyWith(members: members));
+
+    emit(
+      state.copyWith(
+        members: members,
+        isMemberEditMode: false,
+      ),
+    );
   }
 }

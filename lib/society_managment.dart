@@ -28,6 +28,7 @@ export 'package:society_managment/core/constants/country_codes.dart';
 export 'package:society_managment/core/constants/end_points.dart';
 export 'package:society_managment/core/constants/pref_keys.dart';
 export 'package:society_managment/core/theme/app_colors.dart';
+export 'package:society_managment/core/theme/app_input_borders.dart';
 export 'package:society_managment/core/theme/app_styles.dart';
 export 'package:society_managment/core/utils/enums.dart';
 export 'package:society_managment/core/utils/error_handler.dart';
@@ -140,6 +141,10 @@ export 'package:society_managment/features/visitor/main_visitor/cubit/main_visit
 export 'package:society_managment/features/visitor/main_visitor/main_visitor_screen.dart';
 export 'package:society_managment/features/visitor/user_visitor/cubit/user_add_visitor_cubit.dart';
 export 'package:society_managment/features/visitor/user_visitor/user_add_visitor_screen.dart';
+export 'package:society_managment/features/visitor/visitor_history/cubit/visitor_history_cubit.dart';
+export 'package:society_managment/features/visitor/visitor_history/visitor_history_screen.dart';
+export 'package:society_managment/features/visitor/visitor_history/widget/visitor_history_filter_sheet.dart';
+export 'package:society_managment/features/visitor/widget/visitor_card.dart';
 export 'package:society_managment/l10n/app_localizations.dart';
 export 'package:society_managment/service/api_service.dart';
 export 'package:society_managment/service/pref_service.dart';

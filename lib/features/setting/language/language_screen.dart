@@ -6,8 +6,10 @@ class LanguageScreen extends StatelessWidget {
   static const routeName = '/language';
 
   static Widget builder(BuildContext context) {
+    final currentLocale = context.read<AppCubit>().state.locale;
+
     return BlocProvider<LanguageCubit>(
-      create: (_) => LanguageCubit(),
+      create: (_) => LanguageCubit(initialLocale: currentLocale),
       child: const LanguageScreen(),
     );
   }
@@ -39,6 +41,7 @@ class LanguageScreen extends StatelessWidget {
             child: CustomButton(
               title: l10n?.save ?? '',
               isLoading: state.loader,
+              isDisabled: !state.hasLanguageChanged,
               onTap: () => cubit.updateLanguage(context),
             ),
           ),

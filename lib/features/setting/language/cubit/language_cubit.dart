@@ -3,20 +3,18 @@ import 'package:society_managment/society_managment.dart';
 part 'language_state.dart';
 
 class LanguageCubit extends Cubit<LanguageState> {
-  LanguageCubit() : super(LanguageState()) {
-    // refresh(
-    //   state.copyWith(
-    //     selectedLanguage: state.languages.firstWhereOrNull(
-    //       (element) => element.title == userData?.language,
-    //     ),
-    //   ),
-    // );
-    final language = PrefService.getString(PrefKeys.localLanguage);
+  LanguageCubit({Locale? initialLocale}) : super(LanguageState()) {
+    final locale =
+        initialLocale ??
+        AppCubit.localeFromStorage(PrefService.getString(PrefKeys.localLanguage));
+    final selectedLanguage =
+        AppCubit.languageModelForLocale(locale, state.languages) ??
+        state.languages.first;
+
     refresh(
       state.copyWith(
-        selectedLanguage: state.languages.firstWhereOrNull(
-          (element) => element.code == language.split('_').first,
-        ),
+        selectedLanguage: selectedLanguage,
+        initialLanguage: selectedLanguage,
       ),
     );
   }
@@ -32,32 +30,31 @@ class LanguageCubit extends Cubit<LanguageState> {
   }
 
   Future<void> updateLanguage(BuildContext context) async {
-    try {
-      refresh(state.copyWith(loader: true));
-      // final Map<String, dynamic> body = {
-      //   "language": state.selectedLanguage?.title,
-      // };
-
-      // final result = await SettingsApi.updateUserProfile(body);
-      final result = true;
-
-      if (result && context.mounted) {
-        await context.read<AppCubit>().changeLanguage(
-          Locale(
-            state.selectedLanguage?.code ?? "en",
-            state.selectedLanguage?.countryCode ?? "US",
-          ),
-        );
-
-        if (context.mounted) {
-          context.navigator.pop();
-        }
+    final selectedLanguage = state.selectedLanguage;
+    if (selectedLanguage == null || !state.hasLanguageChanged) {
+      if (context.mounted) {
+        context.navigator.pop();
       }
-    } catch (e, stack) {
-      refresh(state.copyWith(loader: false));
-      showCatchToast(e, stack, msg: e.toString());
+      return;
     }
 
-    refresh(state.copyWith(loader: false));
+    final locale = Locale(
+      selectedLanguage.code,
+      selectedLanguage.countryCode,
+    );
+
+    try {
+      refresh(state.copyWith(loader: true));
+      await context.read<AppCubit>().changeLanguage(locale);
+      await WidgetsBinding.instance.endOfFrame;
+
+      if (context.mounted) {
+        context.navigator.pop();
+      }
+    } catch (e, stack) {
+      showCatchToast(e, stack, msg: e.toString());
+    } finally {
+      refresh(state.copyWith(loader: false));
+    }
   }
 }

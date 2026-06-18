@@ -48,6 +48,8 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final hasError = error?.isNotEmpty ?? false;
+
     return ValueListenableBuilder(
       valueListenable: _isObscure,
       builder: (context, bool isObscure, _) {
@@ -96,14 +98,33 @@ class AppTextField extends StatelessWidget {
                 contentPadding:
                     contentPadding ??
                     .symmetric(horizontal: 14.w, vertical: 12.h),
-                border: inputBorder(),
-                focusedBorder: inputBorder().copyWith(
-                  borderSide: BorderSide(color: AppColors.primary),
+                border: AppInputBorders.outline(
+                  radius: borderRadius,
+                  hasError: hasError,
                 ),
-                disabledBorder: inputBorder(),
-                errorBorder: inputBorder(),
-                focusedErrorBorder: inputBorder(),
-                enabledBorder: inputBorder(),
+                enabledBorder: AppInputBorders.outline(
+                  radius: borderRadius,
+                  hasError: hasError,
+                ),
+                focusedBorder: AppInputBorders.outline(
+                  radius: borderRadius,
+                  hasError: hasError,
+                  isFocused: true,
+                ),
+                disabledBorder: AppInputBorders.outline(
+                  radius: borderRadius,
+                  hasError: hasError,
+                  isDisabled: true,
+                ),
+                errorBorder: AppInputBorders.outline(
+                  radius: borderRadius,
+                  hasError: true,
+                ),
+                focusedErrorBorder: AppInputBorders.outline(
+                  radius: borderRadius,
+                  hasError: true,
+                  isFocused: true,
+                ),
                 prefixIconConstraints: BoxConstraints(
                   minWidth: 44.w,
                   maxWidth: 44.w,
@@ -164,17 +185,6 @@ class AppTextField extends StatelessWidget {
           ],
         );
       },
-    );
-  }
-
-  InputBorder inputBorder() {
-    return OutlineInputBorder(
-      borderRadius: .circular(borderRadius ?? 8.r),
-      borderSide: BorderSide(
-        color: error?.isNotEmpty ?? false
-            ? AppColors.red
-            : AppColors.text.withValues(alpha: 0.1),
-      ),
     );
   }
 }

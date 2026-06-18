@@ -21,11 +21,13 @@ abstract class AppAssets {
   static const edit = "${_icons}edit.svg";
   static const edit1 = "${_icons}edit_1.svg";
   static const eye = "${_icons}eye.svg";
+  static const eyeClose = "${_icons}eye_close.svg";
   static const forwardArrow = "${_icons}forwardArrow.svg";
   static const family = "${_icons}family.svg";
   static const filter = "${_icons}filter.svg";
   static const home = "${_icons}home.svg";
   static const homeFill = "${_icons}home_fill.svg";
+  static const history = "${_icons}history.svg";
   static const language = "${_icons}language.svg";
   static const logout = "${_icons}logout.svg";
   static const maintenance = "${_icons}maintenance.svg";

@@ -42,9 +42,23 @@ class MainVisitorScreen extends StatelessWidget {
                   AppConstants.horizontalPadding,
                   14.h,
                 ),
-                child: Text(
-                  l10n?.visitor ?? '',
-                  style: styleW700S24.copyWith(color: AppColors.white),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        l10n?.visitor ?? '',
+                        style: styleW700S24.copyWith(color: AppColors.white),
+                      ),
+                    ),
+                    CustomIconButton(
+                      icon: AppAssets.history,
+                      size: 22.h,
+                      padding: 8.w,
+                      onTap: () => context.navigator.pushNamed(
+                        VisitorHistoryScreen.routeName,
+                      ),
+                    ),
+                  ],
                 ),
               ),
               Expanded(
@@ -70,30 +84,64 @@ class MainVisitorScreen extends StatelessWidget {
                           MainVisitorFilter.values[index],
                         ),
                       ),
+
+                      // Space
                       20.h.spaceVertical,
+
                       AppSearchBar(
                         hintText: l10n?.visitorSearchHint ?? '',
                         onChanged: cubit.onSearchChanged,
                       ),
+
+                      // Space
                       16.h.spaceVertical,
-                      Text(l10n?.todayVisitor ?? '', style: styleW500S20),
-                      12.h.spaceVertical,
-                      _VisitorSectionCard(visitors: todayVisitors, l10n: l10n),
-                      20.h.spaceVertical,
+
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(l10n?.otherVisitor ?? '', style: styleW500S20),
-                          Text(
-                            l10n?.viewAll ?? '',
-                            style: styleW400S16.copyWith(
-                              color: AppColors.text.withValues(alpha: 0.6),
+                          Text(l10n?.todayVisitor ?? '', style: styleW500S20),
+                          GestureDetector(
+                            onTap: () => context.navigator.pushNamed(
+                              VisitorHistoryScreen.routeName,
+                            ),
+                            child: Text(
+                              l10n?.viewAll ?? '',
+                              style: styleW400S16.copyWith(
+                                color: AppColors.text.withValues(alpha: 0.6),
+                              ),
                             ),
                           ),
                         ],
                       ),
+
+                      // Space
                       12.h.spaceVertical,
-                      _VisitorSectionCard(visitors: otherVisitors, l10n: l10n),
+
+                      _VisitorSectionCard(
+                        visitors: todayVisitors,
+                        l10n: l10n,
+                        cubit: cubit,
+                        isTodaySection: true,
+                      ),
+
+                      // Space
+                      20.h.spaceVertical,
+
+                      Text(
+                        l10n?.upcomingVisitorBooking ?? '',
+                        style: styleW500S20,
+                      ),
+
+                      // Space
+                      12.h.spaceVertical,
+
+                      _VisitorSectionCard(
+                        visitors: otherVisitors,
+                        l10n: l10n,
+                        cubit: cubit,
+                        isTodaySection: false,
+                        isUpcomingSection: true,
+                      ),
                     ],
                   ),
                 ),
@@ -107,10 +155,19 @@ class MainVisitorScreen extends StatelessWidget {
 }
 
 class _VisitorSectionCard extends StatelessWidget {
-  const _VisitorSectionCard({required this.visitors, required this.l10n});
+  const _VisitorSectionCard({
+    required this.visitors,
+    required this.l10n,
+    required this.cubit,
+    required this.isTodaySection,
+    this.isUpcomingSection = false,
+  });
 
   final List<Map<String, String>> visitors;
   final AppLocalizations? l10n;
+  final MainVisitorCubit cubit;
+  final bool isTodaySection;
+  final bool isUpcomingSection;
 
   @override
   Widget build(BuildContext context) {
@@ -133,100 +190,49 @@ class _VisitorSectionCard extends StatelessWidget {
       );
     }
 
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(vertical: 4.h),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        borderRadius: BorderRadius.circular(10.r),
-      ),
-      child: ListView.separated(
-        shrinkWrap: true,
-        padding: .zero,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: visitors.length,
-        separatorBuilder: (_, _) => Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.w),
-          child: CommonDivider(color: AppColors.text.withValues(alpha: 0.08)),
-        ),
-        itemBuilder: (_, index) {
-          final visitor = visitors[index];
-          return _VisitorRow(
-            name: visitor['name'] ?? '',
-            meta: visitor['meta'] ?? '',
-            status: visitor['status'] ?? '',
-            approvedLabel: l10n?.approved ?? '',
-            rejectedLabel: l10n?.rejected ?? '',
-          );
-        },
-      ),
-    );
-  }
-}
+    return Column(
+      children: List.generate(visitors.length, (index) {
+        final visitor = visitors[index];
 
-class _VisitorRow extends StatelessWidget {
-  const _VisitorRow({
-    required this.name,
-    required this.meta,
-    required this.status,
-    required this.approvedLabel,
-    required this.rejectedLabel,
-  });
-
-  final String name;
-  final String meta;
-  final String status;
-  final String approvedLabel;
-  final String rejectedLabel;
-
-  @override
-  Widget build(BuildContext context) {
-    final isApproved = status == 'approved';
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
-      child: Row(
-        children: [
-          ClipOval(
-            child: AssetsImg(
-              imagePath: AppAssets.defaultProfileImg,
-              fit: BoxFit.cover,
-              width: 40.w,
-              height: 40.w,
-            ),
-          ),
-          10.w.spaceHorizontal,
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(name, style: styleW600S16),
-                2.h.spaceVertical,
-                Text(
-                  meta,
-                  style: styleW400S14.copyWith(
-                    color: AppColors.text.withValues(alpha: 0.6),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
+        return Padding(
+          padding: EdgeInsets.only(top: index == 0 ? 0 : 12.h),
+          child: Container(
+            width: double.infinity,
+            padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 10.h),
             decoration: BoxDecoration(
-              color: (isApproved ? AppColors.orange : AppColors.red).withValues(
-                alpha: 0.12,
+              color: AppColors.white,
+              borderRadius: BorderRadius.circular(10.r),
+              border: Border.all(
+                color: AppColors.text.withValues(alpha: 0.05),
               ),
-              borderRadius: BorderRadius.circular(20.r),
             ),
-            child: Text(
-              isApproved ? approvedLabel : rejectedLabel,
-              style: styleW500S12.copyWith(
-                color: isApproved ? AppColors.orange : AppColors.darkRed,
-              ),
+            child: VisitorCard(
+              name: visitor['name'] ?? '',
+              flat: visitor['flat'] ?? '',
+              date: visitor['date'] ?? '',
+              vehicleNo: visitor['vehicle_no'] ?? '',
+              checkIn: visitor['check_in'] ?? '',
+              checkOut: visitor['check_out'] ?? '',
+              status: isUpcomingSection ? 'booked' : (visitor['status'] ?? ''),
+              approvedLabel: l10n?.approved ?? '',
+              rejectedLabel: l10n?.rejected ?? '',
+              calledLabel: l10n?.called ?? '',
+              bookedLabel: l10n?.booked ?? '',
+              vehicleNoLabel: l10n?.vehicleNo ?? '',
+              checkInLabel: l10n?.checkIn ?? '',
+              checkOutLabel: l10n?.checkOut ?? '',
+              showTimeSection: !isUpcomingSection,
+              showCheckOutAction: isTodaySection,
+              onCheckOutTap: isTodaySection
+                  ? () => cubit.onVisitorCheckOut(
+                      visitor['id'] ?? '',
+                      isTodaySection: isTodaySection,
+                    )
+                  : null,
             ),
           ),
-        ],
-      ),
+        );
+      }),
     );
   }
 }

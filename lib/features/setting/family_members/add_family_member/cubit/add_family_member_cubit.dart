@@ -8,7 +8,7 @@ class AddFamilyMemberCubit extends Cubit<AddFamilyMemberState> {
       super(
         AddFamilyMemberState(
           isEdit: member != null,
-          occupation: member?.occupation,
+          occupation: _resolveOccupation(member?.occupation),
           relation: member?.relation,
           vehicleFieldCount: (member?.vehicles.isEmpty ?? true)
               ? 1
@@ -38,6 +38,30 @@ class AddFamilyMemberCubit extends Cubit<AddFamilyMemberState> {
 
   void refresh(AddFamilyMemberState newState) {
     if (!isClosed) emit(newState);
+  }
+
+  static String? _resolveOccupation(String? occupation) {
+    if (occupation == null || occupation.isEmpty) return null;
+
+    const occupationKeys = [
+      AppLabelKeys.accountant,
+      AppLabelKeys.engineer,
+      AppLabelKeys.doctor,
+      AppLabelKeys.teacher,
+      AppLabelKeys.lawyer,
+      AppLabelKeys.business,
+      AppLabelKeys.student,
+      AppLabelKeys.homemaker,
+      AppLabelKeys.other,
+    ];
+
+    if (occupationKeys.contains(occupation)) return occupation;
+
+    for (final key in occupationKeys) {
+      if (key.toLowerCase() == occupation.toLowerCase()) return key;
+    }
+
+    return null;
   }
 
   void _prefill(FamilyMemberModel? member) {

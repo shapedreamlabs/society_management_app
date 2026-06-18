@@ -45,6 +45,7 @@ class OnboardingScreen extends StatelessWidget {
                         mainAxisSize: .min,
                         crossAxisAlignment: .start,
                         children: [
+                          // Space
                           50.h.spaceVertical,
 
                           Text(
@@ -55,6 +56,7 @@ class OnboardingScreen extends StatelessWidget {
                             ),
                           ),
 
+                          // Space
                           10.h.spaceVertical,
 
                           Text(
@@ -65,6 +67,7 @@ class OnboardingScreen extends StatelessWidget {
                             ),
                           ),
 
+                          // Space
                           24.h.spaceVertical,
 
                           CustomButton(
@@ -72,6 +75,7 @@ class OnboardingScreen extends StatelessWidget {
                             onTap: () => cubit.onTapGetStarted(context),
                           ),
 
+                          // Space
                           0.h.spaceVertical,
                         ],
                       ),

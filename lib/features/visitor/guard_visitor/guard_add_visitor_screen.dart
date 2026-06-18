@@ -53,12 +53,18 @@ class GuardAddVisitorScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(l10n?.visitorPicture ?? '', style: styleW500S14),
+
+                // Space
                 10.h.spaceVertical,
+
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     _GuardVisitorAvatar(state: state),
+
+                    // Space
                     12.w.spaceHorizontal,
+
                     Expanded(
                       child: Row(
                         children: [
@@ -71,7 +77,10 @@ class GuardAddVisitorScreen extends StatelessWidget {
                               onTap: () => cubit.onUploadImage(context),
                             ),
                           ),
+
+                          // Space
                           8.w.spaceHorizontal,
+
                           Expanded(
                             child: _OutlineActionButton(
                               label: l10n?.remove ?? '',
@@ -88,14 +97,20 @@ class GuardAddVisitorScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                // Space
                 20.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.nameController,
                   header: l10n?.visitorName ?? '',
                   hintText: l10n?.enterVisitorName ?? '',
                   error: state.nameError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.phoneController,
                   header: l10n?.phoneNumber ?? '',
@@ -103,7 +118,10 @@ class GuardAddVisitorScreen extends StatelessWidget {
                   textInputType: TextInputType.phone,
                   error: state.phoneError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.visitingWing ?? '',
                   hintText: l10n?.selectVisitingWing ?? '',
@@ -113,7 +131,10 @@ class GuardAddVisitorScreen extends StatelessWidget {
                   onChanged: cubit.onWingChanged,
                   error: state.wingError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.visitingFlat ?? '',
                   hintText: l10n?.selectVisitingFlat ?? '',
@@ -123,7 +144,10 @@ class GuardAddVisitorScreen extends StatelessWidget {
                   onChanged: cubit.onFlatChanged,
                   error: state.flatError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.purpose ?? '',
                   hintText: l10n?.selectPurpose ?? '',
@@ -133,7 +157,10 @@ class GuardAddVisitorScreen extends StatelessWidget {
                   onChanged: cubit.onPurposeChanged,
                   error: state.purposeError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.vehicleController,
                   header: l10n?.vehicleNo ?? '',

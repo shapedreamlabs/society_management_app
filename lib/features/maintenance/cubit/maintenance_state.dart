@@ -16,12 +16,14 @@ class MaintenanceState extends Equatable {
     this.expectedMaintenance = '50,000',
     this.members = _defaultMembers,
     this.memberFilter = MaintenanceMemberFilter.all,
+    this.isMemberEditMode = false,
   });
 
   final int selectedMonthIndex;
   final MaintenanceMemberFilter memberFilter;
   final bool isBalanceVisible;
   final bool isMaintenanceVisible;
+  final bool isMemberEditMode;
   final String searchQuery;
   final DateTime? focusedMonth;
   final String netBalance;
@@ -46,7 +48,6 @@ class MaintenanceState extends Equatable {
       flat: 'A-102',
       amount: '3500',
       status: MaintenancePaymentStatus.completed,
-      isSelected: true,
     ),
     MaintenanceMember(
       id: '3',
@@ -103,6 +104,7 @@ class MaintenanceState extends Equatable {
     String? expectedMaintenance,
     List<MaintenanceMember>? members,
     MaintenanceMemberFilter? memberFilter,
+    bool? isMemberEditMode,
   }) {
     return MaintenanceState(
       selectedMonthIndex: selectedMonthIndex ?? this.selectedMonthIndex,
@@ -119,12 +121,14 @@ class MaintenanceState extends Equatable {
       expectedMaintenance: expectedMaintenance ?? this.expectedMaintenance,
       members: members ?? this.members,
       memberFilter: memberFilter ?? this.memberFilter,
+      isMemberEditMode: isMemberEditMode ?? this.isMemberEditMode,
     );
   }
 
   @override
   List<Object?> get props => [
     memberFilter,
+    isMemberEditMode,
     selectedMonthIndex,
     isBalanceVisible,
     isMaintenanceVisible,

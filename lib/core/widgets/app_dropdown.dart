@@ -33,6 +33,9 @@ class AppDropDown<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final selectedValue = value != null && items.contains(value) ? value : null;
+    final hasError = error?.isNotEmpty ?? false;
+
     return Column(
       mainAxisSize: .min,
       crossAxisAlignment: .start,
@@ -59,7 +62,7 @@ class AppDropDown<T> extends StatelessWidget {
                     child: Text(itemAsString(item), style: styleW400S14),
                   );
                 }).toList(),
-            initialValue: value,
+            initialValue: selectedValue,
             onChanged: onChanged,
             dropdownColor: AppColors.white,
             icon: SvgAsset(
@@ -82,14 +85,33 @@ class AppDropDown<T> extends StatelessWidget {
               contentPadding:
                   contentPadding ??
                   EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
-              border: inputBorder(),
-              focusedBorder: inputBorder().copyWith(
-                borderSide: BorderSide(color: AppColors.primary),
+              border: AppInputBorders.outline(
+                radius: radius,
+                hasError: hasError,
               ),
-              disabledBorder: inputBorder(),
-              errorBorder: inputBorder(),
-              focusedErrorBorder: inputBorder(),
-              enabledBorder: inputBorder(),
+              enabledBorder: AppInputBorders.outline(
+                radius: radius,
+                hasError: hasError,
+              ),
+              focusedBorder: AppInputBorders.outline(
+                radius: radius,
+                hasError: hasError,
+                isFocused: true,
+              ),
+              disabledBorder: AppInputBorders.outline(
+                radius: radius,
+                hasError: hasError,
+                isDisabled: true,
+              ),
+              errorBorder: AppInputBorders.outline(
+                radius: radius,
+                hasError: true,
+              ),
+              focusedErrorBorder: AppInputBorders.outline(
+                radius: radius,
+                hasError: true,
+                isFocused: true,
+              ),
               prefixIconConstraints: BoxConstraints(
                 minWidth: 44.w,
                 maxWidth: 44.w,
@@ -123,17 +145,6 @@ class AppDropDown<T> extends StatelessWidget {
         ),
         ErrorText(error: error, topPadding: 6.h),
       ],
-    );
-  }
-
-  InputBorder inputBorder() {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(radius ?? 8.r),
-      borderSide: BorderSide(
-        color: error?.isNotEmpty ?? false
-            ? AppColors.red
-            : AppColors.text.withValues(alpha: 0.1),
-      ),
     );
   }
 }

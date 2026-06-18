@@ -174,7 +174,9 @@ class _NetBalanceCard extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(4.w),
                     child: SvgAsset(
-                      imagePath: AppAssets.eye,
+                      imagePath: state.isBalanceVisible
+                          ? AppAssets.eye
+                          : AppAssets.eyeClose,
                       height: 30.h,
                       color: AppColors.white,
                     ),
@@ -186,11 +188,21 @@ class _NetBalanceCard extends StatelessWidget {
 
           6.h.spaceVertical,
 
-          Text(
-            l10n?.vsLastMonth(state.balanceChange) ?? '',
-            style: styleW400S14.copyWith(
-              color: AppColors.white.withValues(alpha: 0.8),
-            ),
+          Row(
+            children: [
+              Text(
+                '+ ₹${state.balanceChange}',
+                style: styleW400S14.copyWith(
+                  color: AppColors.white.withValues(alpha: 0.8),
+                ),
+              ),
+              Text(
+                ' ${l10n?.vsLastMonth ?? ''}',
+                style: styleW400S14.copyWith(
+                  color: AppColors.white.withValues(alpha: 0.8),
+                ),
+              ),
+            ],
           ),
 
           14.h.spaceVertical,

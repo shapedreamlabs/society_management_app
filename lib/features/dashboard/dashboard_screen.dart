@@ -18,51 +18,60 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, DashboardState>(
       builder: (context, state) {
-        return PopScope(
-          canPop: false,
-          onPopInvokedWithResult: (didPop, result) {
-            if (didPop) return;
+        return BlocBuilder<AppCubit, AppState>(
+          buildWhen: (previous, current) =>
+              previous.locale != current.locale,
+          builder: (context, appState) {
+            return PopScope(
+              canPop: false,
+              onPopInvokedWithResult: (didPop, result) {
+                if (didPop) return;
 
-            if (state.tabIndex == 0) {
-              // openSureToExitBottomSheet(context);
-            } else {
-              context.read<DashboardCubit>().onTabChanged(0);
-            }
-          },
-          child: Scaffold(
-            drawer: const MenuDrawer(),
-            appBar: state.tabIndex == 0
-                ? CommonDashAppBar(showSearchBar: true)
-                : null,
-            bottomNavigationBar: BottomBar(),
-            body: AnimatedSwitcher(
-              duration: 200.milliseconds,
-              transitionBuilder: (child, animation) {
-                return SlideTransition(
-                  position: Tween<Offset>(
-                    begin: const Offset(0.5, 0.0),
-                    end: Offset.zero,
-                  ).animate(animation),
-                  child: FadeTransition(opacity: animation, child: child),
-                );
+                if (state.tabIndex == 0) {
+                  openSureToExitBottomSheet(context);
+                } else {
+                  context.read<DashboardCubit>().onTabChanged(0);
+                }
               },
-              child: Builder(
-                key: ValueKey<int>(state.tabIndex),
-                builder: (context) {
-                  if (state.tabIndex == 0) {
-                    return HomeScreen.builder(context);
-                  } else if (state.tabIndex == 1) {
-                    return DirectoryScreen.builder(context);
-                  } else if (state.tabIndex == 2) {
-                    return MaintenanceScreen.builder(context);
-                  } else if (state.tabIndex == 3) {
-                    return MainVisitorScreen.builder(context);
-                  }
-                  return SettingScreen.builder(context);
-                },
+              child: Scaffold(
+                drawer: MenuDrawer(key: ValueKey(appState.locale)),
+                appBar: state.tabIndex == 0
+                    ? CommonDashAppBar(
+                        key: ValueKey(appState.locale),
+                        showSearchBar: true,
+                      )
+                    : null,
+                bottomNavigationBar: BottomBar(key: ValueKey(appState.locale)),
+                body: AnimatedSwitcher(
+                  duration: 200.milliseconds,
+                  transitionBuilder: (child, animation) {
+                    return SlideTransition(
+                      position: Tween<Offset>(
+                        begin: const Offset(0.5, 0.0),
+                        end: Offset.zero,
+                      ).animate(animation),
+                      child: FadeTransition(opacity: animation, child: child),
+                    );
+                  },
+                  child: Builder(
+                    key: ValueKey('${state.tabIndex}_${appState.locale}'),
+                    builder: (context) {
+                      if (state.tabIndex == 0) {
+                        return HomeScreen.builder(context);
+                      } else if (state.tabIndex == 1) {
+                        return DirectoryScreen.builder(context);
+                      } else if (state.tabIndex == 2) {
+                        return MaintenanceScreen.builder(context);
+                      } else if (state.tabIndex == 3) {
+                        return MainVisitorScreen.builder(context);
+                      }
+                      return SettingScreen.builder(context);
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );

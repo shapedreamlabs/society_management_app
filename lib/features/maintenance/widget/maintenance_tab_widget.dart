@@ -32,8 +32,15 @@ class MaintenanceTabBody extends StatelessWidget {
                     child: Text(l10n?.memberList ?? '', style: styleW600S18),
                   ),
                   GestureDetector(
-                    onTap: cubit.toggleSelectAllMembers,
-                    child: Text(l10n?.selectAll ?? '', style: styleW500S14),
+                    onTap: state.isMemberEditMode
+                        ? cubit.toggleSelectAllMembers
+                        : cubit.enterMemberEditMode,
+                    child: Text(
+                      state.isMemberEditMode
+                          ? (l10n?.selectAll ?? '')
+                          : (l10n?.edit ?? ''),
+                      style: styleW500S14,
+                    ),
                   ),
                 ],
               ),
@@ -53,26 +60,64 @@ class MaintenanceTabBody extends StatelessWidget {
                   ),
                 )
               else
-                ListView.separated(
-                  shrinkWrap: true,
-                  padding: .zero,
-                  physics: const NeverScrollableScrollPhysics(),
-                  itemCount: members.length,
-                  separatorBuilder: (_, _) => 14.h.spaceVertical,
-                  itemBuilder: (_, index) {
-                    final member = members[index];
-                    return _MaintenanceMemberTile(
-                      member: member,
-                      l10n: l10n,
-                      onCheckboxTap: () =>
-                          cubit.toggleMemberSelected(member.id),
-                    );
-                  },
+                _MemberListCard(
+                  members: members,
+                  l10n: l10n,
+                  showCheckbox: state.isMemberEditMode,
+                  onCheckboxTap: cubit.toggleMemberSelected,
                 ),
             ],
           ),
         );
       },
+    );
+  }
+}
+
+class _MemberListCard extends StatelessWidget {
+  const _MemberListCard({
+    required this.members,
+    required this.l10n,
+    required this.showCheckbox,
+    required this.onCheckboxTap,
+  });
+
+  final List<MaintenanceMember> members;
+  final AppLocalizations? l10n;
+  final bool showCheckbox;
+  final void Function(String id) onCheckboxTap;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: AppColors.white,
+        borderRadius: BorderRadius.circular(16.r),
+      ),
+      child: ListView.separated(
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(vertical: 4.h),
+        physics: const NeverScrollableScrollPhysics(),
+        itemCount: members.length,
+        separatorBuilder: (_, _) => Divider(
+          height: 1,
+          thickness: 1,
+          color: AppColors.text.withValues(alpha: 0.06),
+          indent: 14.w,
+          endIndent: 14.w,
+        ),
+        itemBuilder: (_, index) {
+          final member = members[index];
+
+          return _MaintenanceMemberTile(
+            member: member,
+            l10n: l10n,
+            showCheckbox: showCheckbox,
+            onCheckboxTap: () => onCheckboxTap(member.id),
+          );
+        },
+      ),
     );
   }
 }
@@ -130,11 +175,11 @@ class _NetMaintenanceCard extends StatelessWidget {
                   child: Padding(
                     padding: EdgeInsets.all(4.w),
                     child: SvgAsset(
-                      imagePath: AppAssets.eye,
+                      imagePath: state.isMaintenanceVisible
+                          ? AppAssets.eye
+                          : AppAssets.eyeClose,
                       height: 30.h,
-                      color: AppColors.white.withValues(
-                        alpha: state.isMaintenanceVisible ? 1 : 0.5,
-                      ),
+                      color: AppColors.white,
                     ),
                   ),
                 ),
@@ -207,51 +252,58 @@ class _MaintenanceMemberTile extends StatelessWidget {
   const _MaintenanceMemberTile({
     required this.member,
     required this.l10n,
+    required this.showCheckbox,
     required this.onCheckboxTap,
   });
 
   final MaintenanceMember member;
   final AppLocalizations? l10n;
+  final bool showCheckbox;
   final VoidCallback onCheckboxTap;
 
   @override
   Widget build(BuildContext context) {
     final isCompleted = member.status == MaintenancePaymentStatus.completed;
 
-    return Row(
-      children: [
-        _MemberCheckbox(value: member.isSelected, onTap: onCheckboxTap),
-        10.w.spaceHorizontal,
-        ClipOval(
-          child: AssetsImg(
-            imagePath: AppAssets.defaultProfileImg,
-            fit: BoxFit.cover,
-            width: 44.w,
-            height: 44.w,
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 14.h, horizontal: 14.w),
+      child: Row(
+        children: [
+          if (showCheckbox) ...[
+            _MemberCheckbox(value: member.isSelected, onTap: onCheckboxTap),
+            10.w.spaceHorizontal,
+          ],
+          ClipOval(
+            child: AssetsImg(
+              imagePath: AppAssets.defaultProfileImg,
+              fit: BoxFit.cover,
+              width: 44.w,
+              height: 44.w,
+            ),
           ),
-        ),
-        10.w.spaceHorizontal,
-        Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('${member.name} - ${member.flat}', style: styleW600S14),
-              2.h.spaceVertical,
-              Text(
-                '₹${member.amount}',
-                style: styleW400S14.copyWith(
-                  color: AppColors.text.withValues(alpha: 0.6),
+          10.w.spaceHorizontal,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text('${member.name} - ${member.flat}', style: styleW600S14),
+                2.h.spaceVertical,
+                Text(
+                  '₹${member.amount}',
+                  style: styleW400S14.copyWith(
+                    color: AppColors.text.withValues(alpha: 0.6),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        8.w.spaceHorizontal,
-        _PaymentStatusBadge(
-          label: isCompleted ? (l10n?.completed ?? '') : (l10n?.pending ?? ''),
-          isCompleted: isCompleted,
-        ),
-      ],
+          8.w.spaceHorizontal,
+          _PaymentStatusBadge(
+            label: isCompleted ? (l10n?.completed ?? '') : (l10n?.pending ?? ''),
+            isCompleted: isCompleted,
+          ),
+        ],
+      ),
     );
   }
 }

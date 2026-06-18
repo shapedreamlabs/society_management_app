@@ -18,7 +18,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get manageEverythingInOnePlace => 'Manage Everything in One Place.';
 
   @override
-  String get onBoardingContent => 'From maintenance to visitors, handle all society tasks effortlessly. Approve guests instantly and track every entry with ease. Pay dues, track history, and stay updated with clear records.';
+  String get onBoardingContent =>
+      'From maintenance to visitors, handle all society tasks effortlessly. Approve guests instantly and track every entry with ease. Pay dues, track history, and stay updated with clear records.';
 
   @override
   String get getStarted => 'Get Started';
@@ -27,7 +28,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get loginNow => 'Login Now';
 
   @override
-  String get loginContent => 'Login to manage your society activities seamlessly.';
+  String get loginContent =>
+      'Login to manage your society activities seamlessly.';
 
   @override
   String get phoneNumber => 'Phone Number';
@@ -63,9 +65,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get resendCode => 'Resend Code';
 
   @override
-  String resendCodeIn(String time) {
-    return 'Resend code in $time';
-  }
+  String get resendCodeIn => 'Resend code in';
 
   @override
   String get verifyContinue => 'Verify & Continue';
@@ -177,6 +177,42 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get rejected => 'Rejected';
+
+  @override
+  String get called => 'Called';
+
+  @override
+  String get checkIn => 'Check In';
+
+  @override
+  String get checkOut => 'Check Out';
+
+  @override
+  String get visitorHistory => 'Visitor History';
+
+  @override
+  String get dateRange => 'Date Range';
+
+  @override
+  String get visitorStatus => 'Visitor Status';
+
+  @override
+  String get last7Days => 'Last 7 Days';
+
+  @override
+  String get last30Days => 'Last 30 Days';
+
+  @override
+  String get customRange => 'Custom Range';
+
+  @override
+  String get clearAll => 'Clear All';
+
+  @override
+  String get apply => 'Apply';
+
+  @override
+  String get wingD => 'Wing D';
 
   @override
   String get noVisitorsAvailable => 'No visitors available';
@@ -464,7 +500,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get logOut => 'Logout';
 
   @override
-  String get logOutContent => 'You will be logged out of your account and need to sign in again to continue.';
+  String get logOutContent =>
+      'You will be logged out of your account and need to sign in again to continue.';
 
   @override
   String get yesLogout => 'Yes, Logout';
@@ -485,7 +522,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get noInternet => 'No Internet';
 
   @override
-  String get noInternetDescription => 'Please check your internet and refresh the page to continue.';
+  String get noInternetDescription =>
+      'Please check your internet and refresh the page to continue.';
 
   @override
   String get retry => 'Retry';
@@ -533,7 +571,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get deleteMember => 'Delete Member';
 
   @override
-  String get deleteMemberContent => 'Are you sure you want to delete this family member.';
+  String get deleteMemberContent =>
+      'Are you sure you want to delete this family member.';
 
   @override
   String get yesDelete => 'Yes, Delete';
@@ -557,9 +596,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get netBalance => 'NET BALANCE';
 
   @override
-  String vsLastMonth(String amount) {
-    return '+ ₹$amount vs Last Month';
-  }
+  String get vsLastMonth => 'vs Last Month';
 
   @override
   String get totalIncome => 'Total Income';
@@ -574,7 +611,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get selectMonth => 'Select Month';
 
   @override
-  String get maintenanceSearchHint => 'Search Transactions, Flats, Categories...';
+  String get maintenanceSearchHint =>
+      'Search Transactions, Flats, Categories...';
 
   @override
   String get fundOverview => 'Fund Overview';
@@ -718,7 +756,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fireDrillTodayTitle => 'Fire Drill Today At 6 PM';
 
   @override
-  String get fireDrillTodaySubtitle => 'Assemble At Ground Floor Parking • All Wings';
+  String get fireDrillTodaySubtitle =>
+      'Assemble At Ground Floor Parking • All Wings';
 
   @override
   String get societyOverview => 'Society Overview';
@@ -892,9 +931,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get yesterday => 'Yesterday';
 
   @override
-  String daysAgo(String count, String time) {
-    return '$count days ago, $time';
-  }
+  String get daysAgo => 'days ago,';
 
   @override
   String get weekdaySun => 'S';

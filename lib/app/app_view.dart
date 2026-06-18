@@ -30,6 +30,18 @@ class AppView extends StatelessWidget {
                     ],
                     supportedLocales: AppLocalizations.supportedLocales,
                     locale: state.locale,
+                    localeListResolutionCallback: (locales, supportedLocales) {
+                      for (final deviceLocale in locales ?? const <Locale>[]) {
+                        for (final supportedLocale in supportedLocales) {
+                          if (supportedLocale.languageCode ==
+                              deviceLocale.languageCode) {
+                            return supportedLocale;
+                          }
+                        }
+                      }
+
+                      return state.locale;
+                    },
                     theme: AppColors.themeData,
                     navigatorKey: navigatorKey,
                     debugShowCheckedModeBanner: kDebugMode,

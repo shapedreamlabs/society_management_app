@@ -56,13 +56,19 @@ class UserAddVisitorScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     _UserVisitorAvatar(state: state),
+
+                    // Space
                     12.w.spaceHorizontal,
+
                     Expanded(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(l10n?.visitorPicture ?? '', style: styleW500S14),
+
+                          // Space
                           10.h.spaceVertical,
+
                           Row(
                             children: [
                               Expanded(
@@ -74,7 +80,10 @@ class UserAddVisitorScreen extends StatelessWidget {
                                   onTap: () => cubit.onUploadImage(context),
                                 ),
                               ),
+
+                              // Space
                               8.w.spaceHorizontal,
+
                               Expanded(
                                 child: _OutlineActionButton(
                                   label: l10n?.remove ?? '',
@@ -93,14 +102,20 @@ class UserAddVisitorScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                // Space
                 20.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.nameController,
                   header: l10n?.visitorName ?? '',
                   hintText: l10n?.enterVisitorName ?? '',
                   error: state.nameError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.phoneController,
                   header: l10n?.phoneNumber ?? '',
@@ -108,7 +123,10 @@ class UserAddVisitorScreen extends StatelessWidget {
                   textInputType: TextInputType.phone,
                   error: state.phoneError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   header: l10n?.date ?? '',
                   hintText: state.visitDate.isEmpty
@@ -119,7 +137,10 @@ class UserAddVisitorScreen extends StatelessWidget {
                   onTap: () => cubit.pickVisitDate(context),
                   error: state.dateError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   header: l10n?.time ?? '',
                   hintText: state.visitTime.isEmpty
@@ -130,7 +151,10 @@ class UserAddVisitorScreen extends StatelessWidget {
                   onTap: () => cubit.pickVisitTime(context),
                   error: state.timeError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.purpose ?? '',
                   hintText: l10n?.selectPurpose ?? '',
@@ -140,7 +164,10 @@ class UserAddVisitorScreen extends StatelessWidget {
                   onChanged: cubit.onPurposeChanged,
                   error: state.purposeError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.vehicleController,
                   header: l10n?.vehicleNo ?? '',
@@ -235,7 +262,10 @@ class _OutlineActionButton extends StatelessWidget {
                     ? iconColor.withValues(alpha: 0.4)
                     : iconColor,
               ),
+
+              // Space
               4.w.spaceHorizontal,
+
               Flexible(
                 child: Text(
                   label,

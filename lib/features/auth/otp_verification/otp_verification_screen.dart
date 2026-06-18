@@ -141,15 +141,25 @@ class OtpVerificationScreen extends StatelessWidget {
                       );
                     }
 
-                    return Text(
-                      l10n?.resendCodeIn(
-                            '${(timer / 60).floor().toString().padLeft(2, '0')}:${(timer % 60).toString().padLeft(2, '0')}',
-                          ) ??
-                          '',
-                      textAlign: .center,
-                      style: styleW400S14.copyWith(
-                        color: AppColors.text.withValues(alpha: 0.8),
+                    final timerText =
+                        '${(timer / 60).floor().toString().padLeft(2, '0')}:${(timer % 60).toString().padLeft(2, '0')}';
+
+                    return Text.rich(
+                      TextSpan(
+                        style: styleW400S14.copyWith(
+                          color: AppColors.text.withValues(alpha: 0.8),
+                        ),
+                        children: [
+                          TextSpan(text: '${l10n?.resendCodeIn ?? ''} '),
+                          TextSpan(
+                            text: timerText,
+                            style: styleW600S14.copyWith(
+                              color: AppColors.text.withValues(alpha: 0.8),
+                            ),
+                          ),
+                        ],
                       ),
+                      textAlign: .center,
                     );
                   },
                 ),

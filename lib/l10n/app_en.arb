@@ -17,14 +17,7 @@
   "otpSentMessageSuffix": "\nIt may take a minute to arrive.",
   "didntYouReceiveAnyCode": "Didn't you receive any code?",
   "resendCode": "Resend Code",
-  "resendCodeIn": "Resend code in {time}",
-  "@resendCodeIn": {
-    "placeholders": {
-      "time": {
-        "type": "String"
-      }
-    }
-  },
+  "resendCodeIn": "Resend code in",
   "verifyContinue": "Verify & Continue",
   "otpIsRequired": "OTP is required",
   "otpIsInvalid": "Please enter a valid 6-digit OTP",
@@ -62,6 +55,18 @@
   "viewAll": "View All",
   "approved": "Approved",
   "rejected": "Rejected",
+  "called": "Called",
+  "checkIn": "Check In",
+  "checkOut": "Check Out",
+  "visitorHistory": "Visitor History",
+  "dateRange": "Date Range",
+  "visitorStatus": "Visitor Status",
+  "last7Days": "Last 7 Days",
+  "last30Days": "Last 30 Days",
+  "customRange": "Custom Range",
+  "clearAll": "Clear All",
+  "apply": "Apply",
+  "wingD": "Wing D",
   "noVisitorsAvailable": "No visitors available",
   "addVisitor": "Add Visitor",
   "upcomingVisitorBooking": "Upcoming Visitor Booking",
@@ -188,14 +193,7 @@
   "income": "Income",
   "expenses": "Expenses",
   "netBalance": "NET BALANCE",
-  "vsLastMonth": "+ ₹{amount} vs Last Month",
-  "@vsLastMonth": {
-    "placeholders": {
-      "amount": {
-        "type": "String"
-      }
-    }
-  },
+  "vsLastMonth": "vs Last Month",
   "totalIncome": "Total Income",
   "totalExpenses": "Total Expenses",
   "filter": "Filter",
@@ -306,17 +304,7 @@
   "am": "AM",
   "pm": "PM",
   "yesterday": "Yesterday",
-  "daysAgo": "{count} days ago, {time}",
-  "@daysAgo": {
-    "placeholders": {
-      "count": {
-        "type": "String"
-      },
-      "time": {
-        "type": "String"
-      }
-    }
-  },
+  "daysAgo": "days ago,",
   "weekdaySun": "S",
   "weekdayMon": "M",
   "weekdayTue": "T",

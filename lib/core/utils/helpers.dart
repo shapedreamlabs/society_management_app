@@ -40,6 +40,10 @@ Future<void> showCatchToast(
 }
 
 bool isEnglishSelected() {
-  return (PrefService.getString(PrefKeys.localLanguage) == "English") ||
-      (PrefService.getString(PrefKeys.localLanguage).isEmpty);
+  final stored = PrefService.getString(PrefKeys.localLanguage);
+  if (stored.isEmpty) {
+    return true;
+  }
+
+  return AppCubit.localeFromStorage(stored).languageCode == 'en';
 }

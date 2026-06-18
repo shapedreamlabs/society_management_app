@@ -16,7 +16,12 @@ class SettingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
 
-    return BlocBuilder<SettingCubit, SettingState>(
+    return BlocListener<AppCubit, AppState>(
+      listenWhen: (previous, current) => previous.locale != current.locale,
+      listener: (context, state) {
+        context.read<SettingCubit>().init(context);
+      },
+      child: BlocBuilder<SettingCubit, SettingState>(
       builder: (context, state) {
         return Scaffold(
           backgroundColor: Colors.transparent,
@@ -133,6 +138,7 @@ class SettingScreen extends StatelessWidget {
           ),
         );
       },
+      ),
     );
   }
 }
