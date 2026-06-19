@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class BottomBar extends StatelessWidget {
   const BottomBar({super.key});

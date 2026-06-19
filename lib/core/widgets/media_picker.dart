@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class MediaPicker {
   static Future<File?> pickFile({required BuildContext context}) async {
@@ -123,7 +123,7 @@ class MediaPicker {
           children: [
             Expanded(
               child: buildBox(
-                AppAssets.edit,
+                AppAssets.camera,
                 l10n?.camera ?? "",
                 ImageSource.camera,
               ),
@@ -131,7 +131,7 @@ class MediaPicker {
 
             Expanded(
               child: buildBox(
-                AppAssets.myProfile,
+                AppAssets.gallery,
                 l10n?.gallery ?? "",
                 ImageSource.gallery,
               ),

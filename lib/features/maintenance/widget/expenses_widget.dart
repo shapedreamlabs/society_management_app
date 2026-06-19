@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class ExpensesBody extends StatelessWidget {
   const ExpensesBody({super.key, required this.l10n});

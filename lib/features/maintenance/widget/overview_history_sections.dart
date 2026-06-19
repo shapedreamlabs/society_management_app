@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class OverviewHistorySections extends StatelessWidget {
   const OverviewHistorySections({
@@ -27,6 +27,7 @@ class OverviewHistorySections extends StatelessWidget {
           onActionTap: onTransactionViewAll,
         ),
 
+        // Space
         12.h.spaceVertical,
 
         overViewListCard(
@@ -52,6 +53,7 @@ class OverviewHistorySections extends StatelessWidget {
                 ),
         ),
 
+        // Space
         20.h.spaceVertical,
 
         headerRow(
@@ -60,6 +62,7 @@ class OverviewHistorySections extends StatelessWidget {
           onActionTap: onMaintenanceViewAll,
         ),
 
+        // Space
         12.h.spaceVertical,
 
         overViewListCard(
@@ -146,7 +149,10 @@ class OverviewHistorySections extends StatelessWidget {
 }
 
 class _TransactionHistoryTile extends StatelessWidget {
-  const _TransactionHistoryTile({required this.transaction, required this.l10n});
+  const _TransactionHistoryTile({
+    required this.transaction,
+    required this.l10n,
+  });
 
   final MaintenanceTransaction transaction;
   final AppLocalizations? l10n;
@@ -178,7 +184,10 @@ class _TransactionHistoryTile extends StatelessWidget {
                   '${transaction.name} - ${transaction.flat}',
                   style: styleW600S14,
                 ),
+
+                // Space
                 2.h.spaceVertical,
+
                 Text(
                   LocalizationLabels.of(l10n, transaction.category),
                   style: styleW400S14.copyWith(
@@ -195,7 +204,10 @@ class _TransactionHistoryTile extends StatelessWidget {
                 transaction.amount,
                 style: styleW600S14.copyWith(color: amountColor),
               ),
+
+              // Space
               2.h.spaceVertical,
+
               Text(
                 transaction.date,
                 style: styleW400S12.copyWith(
@@ -232,7 +244,10 @@ class _OverviewMaintenanceTile extends StatelessWidget {
               height: 40.w,
             ),
           ),
+
+          // Space
           10.w.spaceHorizontal,
+
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -268,7 +283,9 @@ class _OverviewStatusBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final color = isCompleted ? AppColors.chartIncomeGreen : AppColors.primary;
+    final color = isCompleted
+        ? AppColors.chartIncomeGreen
+        : AppColors.chartExpenseRed;
 
     return Container(
       padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 6.h),

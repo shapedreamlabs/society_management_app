@@ -1,6 +1,6 @@
 import 'dart:math' as math;
 
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class MonthlyTrendsChart extends StatelessWidget {
   const MonthlyTrendsChart({super.key, required this.l10n});

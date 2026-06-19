@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class SocietyOverview extends StatelessWidget {
   const SocietyOverview({super.key, required this.l10n});

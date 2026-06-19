@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class EmergencyAlertsScreen extends StatelessWidget {
   const EmergencyAlertsScreen({super.key});

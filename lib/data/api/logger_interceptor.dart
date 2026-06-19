@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment_extra.dart';
+import 'package:society_managment/society_management_extra.dart';
 
 class LoggerInterceptor extends Interceptor {
   @override

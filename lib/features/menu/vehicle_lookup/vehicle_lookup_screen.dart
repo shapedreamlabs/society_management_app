@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class VehicleLookupScreen extends StatelessWidget {
   const VehicleLookupScreen({super.key});

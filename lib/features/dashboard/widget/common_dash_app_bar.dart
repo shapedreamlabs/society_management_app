@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class CommonDashAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CommonDashAppBar({super.key, this.showSearchBar = false});
@@ -18,6 +18,7 @@ class CommonDashAppBar extends StatelessWidget implements PreferredSizeWidget {
 
     return CustomAppBar(
       color: Colors.transparent,
+      systemUiStyle: .light,
       backArrow: false,
       centerTitle: false,
       flexibleSpaceWidget: Container(

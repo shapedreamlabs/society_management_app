@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});

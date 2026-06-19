@@ -1,5 +1,5 @@
-import 'package:society_managment/society_managment.dart';
-import 'package:society_managment/society_managment_extra.dart';
+import 'package:society_managment/society_management.dart';
+import 'package:society_managment/society_management_extra.dart';
 
 part 'sign_in_state.dart';
 

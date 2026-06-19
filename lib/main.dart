@@ -1,5 +1,5 @@
-import 'package:society_managment/society_managment.dart';
-import 'package:society_managment/society_managment_extra.dart';
+import 'package:society_managment/society_management.dart';
+import 'package:society_managment/society_management_extra.dart';
 
 void main() {
   runZonedGuarded<Future<void>>(
@@ -8,6 +8,13 @@ void main() {
       FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
       SystemChrome.setPreferredOrientations([.portraitUp, .portraitDown]);
+
+      SystemChrome.setSystemUIOverlayStyle(
+        const SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarIconBrightness: Brightness.light,
+        ),
+      );
 
       await PrefService.init();
       await ScreenUtil.ensureScreenSize();

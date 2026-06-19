@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 /// Local auth helpers — no API calls until backend is ready.
 class AuthRepo {

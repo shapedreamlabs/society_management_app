@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment_extra.dart';
+import 'package:society_managment/society_management_extra.dart';
 
 UserModel userModelFromJson(String str) => UserModel.fromJson(json.decode(str));
 

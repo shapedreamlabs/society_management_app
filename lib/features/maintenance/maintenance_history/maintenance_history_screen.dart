@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class MaintenanceHistoryScreen extends StatelessWidget {
   const MaintenanceHistoryScreen({super.key});

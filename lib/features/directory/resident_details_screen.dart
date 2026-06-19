@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class ResidentDetailsScreen extends StatelessWidget {
   const ResidentDetailsScreen({super.key, required this.resident});

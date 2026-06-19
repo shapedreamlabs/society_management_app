@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class EditProfileScreen extends StatelessWidget {
   const EditProfileScreen({super.key});
@@ -87,14 +87,20 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ),
                 ),
+
+                // Space
                 24.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.nameController,
                   header: l10n?.name ?? '',
                   hintText: l10n?.enterName ?? '',
                   error: state.nameError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.phoneNumberController,
                   header: l10n?.phoneNumber ?? '',
@@ -102,7 +108,10 @@ class EditProfileScreen extends StatelessWidget {
                   textInputType: TextInputType.phone,
                   error: state.phoneNumberError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.wing ?? '',
                   hintText: l10n?.selectWing ?? '',
@@ -112,7 +121,10 @@ class EditProfileScreen extends StatelessWidget {
                   onChanged: cubit.onWingChanged,
                   error: state.wingError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.flat ?? '',
                   hintText: l10n?.selectFlat ?? '',
@@ -122,14 +134,20 @@ class EditProfileScreen extends StatelessWidget {
                   onChanged: cubit.onFlatChanged,
                   error: state.flatError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   controller: cubit.occupationController,
                   header: l10n?.occupation ?? '',
                   hintText: l10n?.enterOccupation ?? '',
                   error: state.occupationError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppTextField(
                   header: l10n?.moveInDate ?? '',
                   hintText: state.moveInDate.isEmpty
@@ -140,7 +158,10 @@ class EditProfileScreen extends StatelessWidget {
                   onTap: () => cubit.pickMoveInDate(context),
                   error: state.moveInDateError,
                 ),
+
+                // Space
                 14.h.spaceVertical,
+
                 Row(
                   children: [
                     Expanded(
@@ -155,7 +176,10 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   ],
                 ),
+
+                // Space
                 10.h.spaceVertical,
+
                 ...List.generate(state.vehicleFieldCount, (index) {
                   final canDelete = state.vehicleFieldCount > 1 && index > 0;
 
@@ -186,7 +210,10 @@ class EditProfileScreen extends StatelessWidget {
                     ),
                   );
                 }),
+
+                // Space
                 14.h.spaceVertical,
+
                 AppDropDown<String>(
                   header: l10n?.residentType ?? '',
                   hintText: l10n?.selectResidentType ?? '',

@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class RecentComplaints extends StatelessWidget {
   const RecentComplaints({super.key, required this.l10n});
@@ -31,6 +31,7 @@ class RecentComplaints extends StatelessWidget {
           ),
           child: ListView.separated(
             physics: const NeverScrollableScrollPhysics(),
+            padding: .zero,
             shrinkWrap: true,
             itemCount: 10,
             separatorBuilder: (context, index) {
@@ -38,11 +39,12 @@ class RecentComplaints extends StatelessWidget {
                 height: 1.h,
                 width: 100.w,
                 color: AppColors.text.withValues(alpha: 0.1),
-                margin: .symmetric(horizontal: 14.w, vertical: 12.h),
+                margin: .symmetric(horizontal: 14.w, vertical: 10.h),
               );
             },
             itemBuilder: (context, index) {
               return ListTile(
+                contentPadding: .symmetric(horizontal: 14.w),
                 leading: ClipOval(
                   child: AssetsImg(
                     imagePath: AppAssets.defaultProfileImg,

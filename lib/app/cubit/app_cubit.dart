@@ -1,6 +1,6 @@
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 part 'app_state.dart';
 

@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 void showCustomToast(String msg, {bool error = false}) {
   final Color accent = error ? AppColors.red : AppColors.primary;

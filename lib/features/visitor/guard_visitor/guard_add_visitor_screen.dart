@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class GuardAddVisitorScreen extends StatelessWidget {
   const GuardAddVisitorScreen({super.key});

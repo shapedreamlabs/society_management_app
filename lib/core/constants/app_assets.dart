@@ -19,6 +19,8 @@ abstract class AppAssets {
   static const emergencyBW = "${_icons}emergency_bw.svg";
   static const error = "${_icons}error.svg";
   static const edit = "${_icons}edit.svg";
+  static const camera = "${_icons}camera.svg";
+  static const gallery = "${_icons}gallery.svg";
   static const edit1 = "${_icons}edit_1.svg";
   static const eye = "${_icons}eye.svg";
   static const eyeClose = "${_icons}eye_close.svg";

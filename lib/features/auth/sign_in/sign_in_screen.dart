@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});

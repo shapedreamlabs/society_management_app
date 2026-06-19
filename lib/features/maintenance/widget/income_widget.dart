@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class IncomeBody extends StatelessWidget {
   const IncomeBody({super.key, required this.l10n});

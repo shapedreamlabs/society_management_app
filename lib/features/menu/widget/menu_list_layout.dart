@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 class MenuListLayout extends StatelessWidget {
   const MenuListLayout({super.key, required this.items, this.onItemTap});

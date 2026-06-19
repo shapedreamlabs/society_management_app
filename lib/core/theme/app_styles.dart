@@ -1,4 +1,4 @@
-import 'package:society_managment/society_managment.dart';
+import 'package:society_managment/society_management.dart';
 
 ///------------------------------- W400 -------------------------------///
 TextStyle styleW400S12 = TextStyle(

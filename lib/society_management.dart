@@ -149,7 +149,7 @@ export 'package:society_managment/l10n/app_localizations.dart';
 export 'package:society_managment/service/api_service.dart';
 export 'package:society_managment/service/pref_service.dart';
 export 'package:society_managment/service/route_service.dart';
-export 'package:society_managment/society_managment.dart';
+export 'package:society_managment/society_management.dart';
 export 'package:url_launcher/url_launcher.dart';
 
 export 'app/app_view.dart';
